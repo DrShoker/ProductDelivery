@@ -4,7 +4,8 @@ using System.Text;
 
 namespace DataAccessLayer.Entities
 {
-    class Product
+    public class Product
     {
+        public int Id { get; set; }
     }
 }
