@@ -35,11 +35,10 @@ namespace ProductDelivery
             routeBuilder.MapRoute("TryDBConnection",
                 async context =>
                 {
-                    DataAccessLayer.Entities.LayerContext db = new DataAccessLayer.Entities.LayerContext();
-                    
-                    db.Products.Add(new Product());
+                    LayerContext db = new LayerContext();
+                    db.Admins.Add(new Admin());
                     db.SaveChanges();
-                    await context.Response.WriteAsync(db.Products.FirstOrDefault().ToString());
+                    await context.Response.WriteAsync("ok");
                 }
                 );
             app.UseRouter(routeBuilder.Build());

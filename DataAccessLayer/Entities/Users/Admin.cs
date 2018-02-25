@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DataAccessLayer.EF
+namespace DataAccessLayer.Entities
 {
-    class ProductContext
+    public class Admin : User
     {
+
     }
 }

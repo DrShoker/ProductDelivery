@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DataAccessLayer.Repositories
+namespace DataAccessLayer.Entities
 {
-    class Class1
+    public enum Sex
     {
+        Man,
+        Woman
     }
 }
