@@ -16,6 +16,7 @@ namespace DataAccessLayer.Entities
         public DbSet<Client> Clients { get; set; }
         public DbSet<DeliveryProduct> DeliveriesProducts { get; set; }
         public DbSet<Delivery> Deliveries { get; set; }
+        public DbSet<Image> Images { get; set; }
 
         public LayerContext()
         {
@@ -24,14 +25,19 @@ namespace DataAccessLayer.Entities
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=ProductDeliveryDB6;Trusted_Connection=True;");
+            optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=ProductDeliveryDB8;Trusted_Connection=True;");
         }
 
-        //protected override void OnModelCreating(ModelBuilder modelBuilder)
-        //{
-        //    modelBuilder.Entity<DeliveryAndProduct>()
-        //        .HasOne(dap=>dap.Product)
-        //        .WithMany(p=>p.DeliveryAndProduct)
-        //}
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Image>()
+                .HasOne(i => i.Product)
+                .WithOne(p => p.Image)
+                .HasForeignKey<Product>();
+            modelBuilder.Entity<Product>()
+                .HasOne(p=>p.Image)
+                .WithOne(p => p.Product)
+                .HasForeignKey<Image>();
+        }
     }
 }

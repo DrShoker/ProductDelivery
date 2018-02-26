@@ -9,4 +9,10 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="System.Drawing">
+      <HintPath>..\ProductDelivery\obj\Drawing.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>
