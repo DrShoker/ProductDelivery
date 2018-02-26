@@ -69,5 +69,47 @@ namespace ProductDelivery.Controllers
                 return new FileStreamResult(ms,image.ContentType);
             }
         }
+
+        [HttpPost]
+        public  IActionResult CreateUser(IList<IFormFile> files, Admin admin)
+        {
+            IFormFile uploadedImage = files.FirstOrDefault();
+            if (uploadedImage == null || uploadedImage.ContentType.ToLower().StartsWith("image/"))
+            {
+                using (EFUnitOfWork db = new EFUnitOfWork())
+                {
+                    MemoryStream ms = new MemoryStream();
+                    uploadedImage.OpenReadStream().CopyTo(ms);
+                    System.Drawing.Image image = System.Drawing.Image.FromStream(ms);
+
+                    Admin administrator = new Admin()
+                    {
+                        Name = "Dadya",
+
+                        ImgData = ms.ToArray(),
+                        ImgWidth = image.Width,
+                        ImgHeight = image.Height,
+                        ImgContentType = uploadedImage.ContentType
+                    };
+                    db.Admins.Create(administrator);
+                    db.Save();
+
+                }
+
+            }
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public FileStreamResult ViewUserImage(int id)
+        {
+            using (EFUnitOfWork db = new EFUnitOfWork())
+            {
+                DataAccessLayer.Entities.Admin admin = db.Admins.Get(id);
+                MemoryStream ms = new MemoryStream(admin.ImgData);
+                return new FileStreamResult(ms, admin.ImgContentType);
+            }
+        }
     }
 }
