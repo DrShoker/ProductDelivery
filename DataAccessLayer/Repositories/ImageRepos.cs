@@ -4,6 +4,8 @@ using System.Linq;
 using DataAccessLayer.Interfaces;
 using DataAccessLayer.Entities;
 using DataAccessLayer.Entities.Products;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace DataAccessLayer.Repositories
 {
@@ -31,6 +33,11 @@ namespace DataAccessLayer.Repositories
         public IEnumerable<Image> Find(Func<Image, bool> predicate)
         {
             return db.Images.Where(predicate);
+        }
+
+        public Task<Image> FirstOrDefaultAsync(CancellationToken predicate)
+        {
+            throw new NotImplementedException();
         }
 
         public Image Get(int id)

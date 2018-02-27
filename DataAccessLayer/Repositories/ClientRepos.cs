@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using DataAccessLayer.Interfaces;
 using DataAccessLayer.Entities;
+using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
 
 namespace DataAccessLayer.Repositories
 {
@@ -30,6 +32,11 @@ namespace DataAccessLayer.Repositories
         public IEnumerable<Client> Find(Func<Client, bool> predicate)
         {
             return db.Clients.Where(predicate);
+        }
+
+        public Task<Client> FirstOrDefaultAsync(System.Threading.CancellationToken predicate)
+        {
+            return db.Clients.FirstOrDefaultAsync(predicate);
         }
 
         public Client Get(int id)

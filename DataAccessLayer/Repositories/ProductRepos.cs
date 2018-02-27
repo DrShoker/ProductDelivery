@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using DataAccessLayer.Interfaces;
 using DataAccessLayer.Entities;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace DataAccessLayer.Repositories
 {
@@ -30,6 +32,11 @@ namespace DataAccessLayer.Repositories
         public IEnumerable<Product> Find(Func<Product, bool> predicate)
         {
             return db.Products.Where(predicate);
+        }
+
+        public Task<Product> FirstOrDefaultAsync(CancellationToken predicate)
+        {
+            throw new NotImplementedException();
         }
 
         public Product Get(int id)

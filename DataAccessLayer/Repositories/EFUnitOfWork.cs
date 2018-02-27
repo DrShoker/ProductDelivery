@@ -4,6 +4,7 @@ using System.Text;
 using DataAccessLayer.Entities;
 using DataAccessLayer.Entities.Products;
 using DataAccessLayer.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace DataAccessLayer.Repositories
 {

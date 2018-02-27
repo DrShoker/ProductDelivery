@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace DataAccessLayer.Interfaces
 {
@@ -13,5 +14,6 @@ namespace DataAccessLayer.Interfaces
         void Create(T item);
         void Update(T item);
         void Delete(int id);
+        Task<T> FirstOrDefaultAsync(System.Threading.CancellationToken predicate);
     }
 }

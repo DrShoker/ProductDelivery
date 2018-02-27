@@ -4,6 +4,8 @@ using System.Linq;
 using DataAccessLayer.Interfaces;
 using DataAccessLayer.Entities;
 using DataAccessLayer.Entities.Products;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace DataAccessLayer.Repositories
 {
@@ -31,6 +33,11 @@ namespace DataAccessLayer.Repositories
         public IEnumerable<ProductAttribute> Find(Func<ProductAttribute, bool> predicate)
         {
             return db.ProductAttributes.Where(predicate);
+        }
+
+        public Task<ProductAttribute> FirstOrDefaultAsync(CancellationToken predicate)
+        {
+            throw new NotImplementedException();
         }
 
         public ProductAttribute Get(int id)

@@ -9,6 +9,7 @@ using ProductDelivery.Models;
 using DataAccessLayer.Repositories;
 using System.IO;
 using DataAccessLayer.Entities;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ProductDelivery.Controllers
 {
