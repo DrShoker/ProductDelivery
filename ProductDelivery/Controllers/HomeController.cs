@@ -18,8 +18,8 @@ namespace ProductDelivery.Controllers
         {
             using (EFUnitOfWork db = new EFUnitOfWork())
             {
-                List<int> imageIds = db.Images.GetAll().Select(i => i.Id).ToList();
-                return View(imageIds);
+                List<int> AdminsImg = db.Admins.GetAll().Select(i => i.Id).ToList();
+                return View(AdminsImg);
             }
         }
 

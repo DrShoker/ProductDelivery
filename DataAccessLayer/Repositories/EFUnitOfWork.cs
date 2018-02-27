@@ -4,6 +4,8 @@ using System.Text;
 using DataAccessLayer.Entities;
 using DataAccessLayer.Entities.Products;
 using DataAccessLayer.Interfaces;
+using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
 
 namespace DataAccessLayer.Repositories
 {
@@ -109,6 +111,10 @@ namespace DataAccessLayer.Repositories
         public void Save()
         {
             db.SaveChanges();
+        }
+        public Task SaveChangesAsync()
+        {
+            return db.SaveChangesAsync();
         }
     }
 }
