@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using ProductDelivery.Models;
+using ProductDelivery.Models.ViewModels; // пространство имен моделей RegisterModel и LoginModel
 using DataAccessLayer.Entities;
 using DataAccessLayer.Repositories;
 using Microsoft.AspNetCore.Authentication;
@@ -27,6 +28,13 @@ namespace ProductDelivery.Controllers
         {
             return View();
         }
+        
+
+        [HttpGet]
+        public IActionResult Register()
+        {
+            return View();
+        }
 
         [HttpPost]
         public async Task<IActionResult> Login(LoginModel model)
@@ -44,6 +52,30 @@ namespace ProductDelivery.Controllers
                 ModelState.AddModelError("", "Некорректные логин и(или) пароль");
             }
             return View(model);
+        }
+
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Register(RegisterModel model)
+        {
+            using (EFUnitOfWork db = new EFUnitOfWork())
+            {
+                if (ModelState.IsValid)
+                {
+                    Client client = await db.Clients.GetAll().ToAsyncEnumerable().FirstOrDefault();
+                    if (client == null)
+                    {
+                        db.Clients.Create(new Client { Email = model.Email, Password = model.Password });
+                        await db.SaveChangesAsync();
+
+                        await Authenticate(model.Email);
+
+                        return RedirectToAction("Index", "Home");
+                    }
+                    else
+                        ModelState.AddModelError("", "Некорректные логин и (или) пароль");
+                }
+                return View(model);
+            }
         }
 
         private async Task Authenticate(string userName)
@@ -71,7 +103,6 @@ namespace ProductDelivery.Controllers
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction("Login", "User");
-
         }
     }
 }

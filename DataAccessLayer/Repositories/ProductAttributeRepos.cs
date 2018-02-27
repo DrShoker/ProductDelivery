@@ -9,50 +9,12 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Repositories
 {
-    public class ProductAttributeRepos : IRepository<ProductAttribute>
+    public class ProductAttributeRepos : Repository<ProductAttribute>
     {
-        private LayerContext db;
-
         public ProductAttributeRepos(LayerContext context)
+            : base(context)
         {
             db = context;
-        }
-
-        public void Create(ProductAttribute item)
-        {
-            db.ProductAttributes.Add(item);
-        }
-
-        public void Delete(int id)
-        {
-            var pa = db.ProductAttributes.Find(id);
-            if (pa != null)
-                db.ProductAttributes.Remove(pa);
-        }
-
-        public IEnumerable<ProductAttribute> Find(Func<ProductAttribute, bool> predicate)
-        {
-            return db.ProductAttributes.Where(predicate);
-        }
-
-        public Task<ProductAttribute> FirstOrDefaultAsync(CancellationToken predicate)
-        {
-            throw new NotImplementedException();
-        }
-
-        public ProductAttribute Get(int id)
-        {
-            return db.ProductAttributes.Find(id);
-        }
-
-        public IEnumerable<ProductAttribute> GetAll()
-        {
-            return db.ProductAttributes;
-        }
-
-        public void Update(ProductAttribute item)
-        {
-            db.ProductAttributes.Update(item);
         }
     }
 }

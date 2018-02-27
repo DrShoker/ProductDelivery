@@ -5,53 +5,16 @@ using DataAccessLayer.Interfaces;
 using DataAccessLayer.Entities;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
+using System.Threading;
 
 namespace DataAccessLayer.Repositories
 {
-    public class ClientRepos : IRepository<Client>
+    public class ClientRepos : Repository<Client>
     {
-        LayerContext db;
-
         public ClientRepos(LayerContext context)
+            : base(context)
         {
-            db = context;
-        }
-
-        public void Create(Client item)
-        {
-            db.Clients.Add(item);
-        }
-
-        public void Delete(int id)
-        {
-            var c = db.Clients.Find(id);
-            if (c != null)
-                db.Clients.Remove(c);
-        }
-
-        public IEnumerable<Client> Find(Func<Client, bool> predicate)
-        {
-            return db.Clients.Where(predicate);
-        }
-
-        public Task<Client> FirstOrDefaultAsync(System.Threading.CancellationToken predicate)
-        {
-            return db.Clients.FirstOrDefaultAsync(predicate);
-        }
-
-        public Client Get(int id)
-        {
-            return db.Clients.Find(id);
-        }
-
-        public IEnumerable<Client> GetAll()
-        {
-            return db.Clients;
-        }
-
-        public void Update(Client item)
-        {
-            db.Clients.Update(item);
+            set = db.Clients;
         }
     }
 }

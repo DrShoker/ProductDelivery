@@ -42,7 +42,6 @@
                  onmouseover="document.getElementById('ImgSlide').src='/images/office1.svg'">
                 <div class="col-sm-1">
                     <div class="col-sm-6">
-
                     </div>
                     <div class="col-sm">
 
@@ -89,3 +88,12 @@
 <script >
 
 </script>
+<form action="/Home/CreateUser" enctype="multipart/form-data" method="post">
+    <input type="file" name="files" />
+    <button>post</button>
+</form>
+
+@foreach (var item in Model)
+{
+    <img src="/Home/ViewUserImage/@item" />
+}

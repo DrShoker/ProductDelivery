@@ -19,8 +19,8 @@ namespace ProductDelivery.Controllers
         {
             using (EFUnitOfWork db = new EFUnitOfWork())
             {
-                List<int> imageIds = db.Images.GetAll().Select(i => i.Id).ToList();
-                return View(imageIds);
+                List<int> AdminsImg = db.Admins.GetAll().Select(i => i.Id).ToList();
+                return View(AdminsImg);
             }
         }
 
@@ -68,6 +68,48 @@ namespace ProductDelivery.Controllers
                 DataAccessLayer.Entities.Products.Image image = db.Images.Get(id);
                 MemoryStream ms = new MemoryStream(image.Data);
                 return new FileStreamResult(ms,image.ContentType);
+            }
+        }
+
+        [HttpPost]
+        public  IActionResult CreateUser(IList<IFormFile> files, Admin admin)
+        {
+            IFormFile uploadedImage = files.FirstOrDefault();
+            if (uploadedImage == null || uploadedImage.ContentType.ToLower().StartsWith("image/"))
+            {
+                using (EFUnitOfWork db = new EFUnitOfWork())
+                {
+                    MemoryStream ms = new MemoryStream();
+                    uploadedImage.OpenReadStream().CopyTo(ms);
+                    System.Drawing.Image image = System.Drawing.Image.FromStream(ms);
+
+                    Admin administrator = new Admin()
+                    {
+                        Name = "Dadya",
+
+                        ImgData = ms.ToArray(),
+                        ImgWidth = image.Width,
+                        ImgHeight = image.Height,
+                        ImgContentType = uploadedImage.ContentType
+                    };
+                    db.Admins.Create(administrator);
+                    db.Save();
+
+                }
+
+            }
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public FileStreamResult ViewUserImage(int id)
+        {
+            using (EFUnitOfWork db = new EFUnitOfWork())
+            {
+                DataAccessLayer.Entities.Admin admin = db.Admins.Get(id);
+                MemoryStream ms = new MemoryStream(admin.ImgData);
+                return new FileStreamResult(ms, admin.ImgContentType);
             }
         }
     }
