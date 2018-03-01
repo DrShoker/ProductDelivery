@@ -37,9 +37,17 @@ namespace DataAccessLayer.Repositories
             return set.Where(predicate);
         }
 
-        public Task<T> FirstOrDefaultAsync(CancellationToken predicate)
+        public T FirstOrDefault(Func<T,bool> predicate)
         {
-            return set.FirstOrDefaultAsync();
+            return set.FirstOrDefault(predicate);
+        }
+
+        public Task<T> FirstOrDefaultAsync(Func<T,bool> predicate)
+        {
+            return Task.Run(()=>
+            {
+                return set.FirstOrDefault(predicate);
+            });
         }
 
         public T Get(int id)

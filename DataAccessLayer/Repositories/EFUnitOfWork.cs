@@ -113,7 +113,7 @@ namespace DataAccessLayer.Repositories
             db.SaveChanges();
         }
 
-        public Task SaveChangesAsync()
+        public Task<int> SaveChangesAsync()
         {
             return db.SaveChangesAsync();
         }

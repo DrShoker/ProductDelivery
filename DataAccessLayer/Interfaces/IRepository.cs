@@ -15,6 +15,7 @@ namespace DataAccessLayer.Interfaces
         void Create(T item);
         void Update(T item);
         void Delete(int id);
-        Task<T> FirstOrDefaultAsync(System.Threading.CancellationToken predicate);
+        T FirstOrDefault(Func<T, bool> predicate);
+        Task<T> FirstOrDefaultAsync(Func<T, bool> predicate);
     }
 }
