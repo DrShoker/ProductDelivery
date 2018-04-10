@@ -1,6 +1,46 @@
 ﻿body {
-    padding-top: 0px;
-    padding-bottom: 20px;
+    position: relative;
+    font-size: 19px;
+    font-family: 'fedrasanspro normal';
+    src: url('~/Fonts/FedraSansPro Normal.otf') format('opentype');
+    padding-top: 60px;
+    padding-bottom: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+.content{
+    margin: 0px;
+}
+
+.mainNav {
+    background-color: rgba(235, 237, 239,0.9);
+}
+
+.ProductNav {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.ProductNav .col-md-1:hover {
+    border-bottom: solid;
+    border-top:solid;
+    border-color: #2E8B57;
+    background-color: #ADFF2F;
+    cursor: pointer;
+}
+
+.ProductNav .col-md-1 {
+    border-bottom: solid;
+    border-top:solid;
+    border-color: rgba(0,0,0,0);
+}
+
+.NavIco {
+    margin-top: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #ImgSlide

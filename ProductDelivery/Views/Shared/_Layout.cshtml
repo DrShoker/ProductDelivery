@@ -12,7 +12,7 @@
     </environment>
 </head>
 <body>
-    <nav class="navbar navbar-fixed-top navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar fixed-top navbar-expand-lg mainNav navbar-light">
         <a class="navbar-brand" href="~/Home">ProductDelivery</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -93,7 +93,7 @@
             </form>
         </div>
     </nav>
-    <div class="container body-content">
+    <div class="content">
         @RenderBody()
         <hr />
         <footer>
@@ -105,6 +105,7 @@
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>
+        <script src="~/js/ProductCatalog.js"></script>
     </environment>
     <environment exclude="Development">
         <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"

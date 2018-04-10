@@ -5,13 +5,14 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using DataAccessLayer.Entities;
 using DataAccessLayer.Repositories;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authorization;
+using DataAccessLayer.Enums;
 
 namespace ProductDelivery.Controllers
 {
     public class ProductController : Controller
     {
+        EFUnitOfWork db = new EFUnitOfWork();
+
         [HttpGet]
         public IActionResult OpenProducts()
         {
@@ -19,9 +20,13 @@ namespace ProductDelivery.Controllers
         }
 
         [HttpGet]
-        public IActionResult ShowProductInfo()
+        public IActionResult Catalog(Departments dep)
         {
-            return View("");
+            Departments department = (Departments)dep;
+            List<Product> products = db.Products.GetAll().Where(p=>p.Department==department).
+                OrderBy(p=>p.Type).ToList();
+            ViewBag.Dep = dep.ConvertToString();
+            return View(products);
         }
 
         //[Authorize]

@@ -1,7 +1,57 @@
-﻿<script>
-    var img1 = new Image().src = '~/images/office1.svg';
-</script>
-<div class="container corousel">
+﻿@using DataAccessLayer.Enums;
+<div class="container ProductNav">
+    <div class="row">
+        <div class="col-md-1" id="@Departments.FruitVeg">
+            <img src="~/images/ProductNav/Fruits.png" class="NavIco" />
+            <p class="text-center">Fruits, vegetables</p>
+        </div>
+        <div class="col-md-1" id="@Departments.NonAlco">
+            <img src="~/images/ProductNav/Non alcohol.png" class="NavIco" />
+            <p class="text-center">Non alcohol</p>
+        </div>
+        <div class="col-md-1" id="@Departments.Alco">
+            <img src="~/images/ProductNav/Alcohol.png" class="NavIco" />
+            <p class="text-center">Alcohol drinks</p>
+        </div>
+        <div class="col-md-1" id="@Departments.Bakery">
+            <img src="~/images/ProductNav/Bread.png" class="NavIco" />
+            <p class="text-center">Bakery</p>
+        </div>
+        <div class="col-md-1" id="@Departments.Dairy">
+            <img src="~/images/ProductNav/Milk.png" class="NavIco" />
+            <p class="text-center">Dairy</p>
+        </div>
+        <div class="col-md-1" id="@Departments.Pastry">
+            <img src="~/images/ProductNav/Pastry.png" class="NavIco" />
+            <p class="text-center">Pastry</p>
+        </div>
+        <div class="col-md-1" id="@Departments.Gastronomy">
+            <img src="~/images/ProductNav/Fish.png" class="NavIco" />
+            <p class="text-center">Gastronomy</p>
+        </div>
+        <div class="col-md-1" id="@Departments.Grocery">
+            <img src="~/images/ProductNav/Grocery.png" class="NavIco" />
+            <p class="text-center">Grocery</p>
+        </div>
+        <div class="col-md-1" id="@Departments.Frozen">
+            <img src="~/images/ProductNav/Frozen.png" class="NavIco" />
+            <p class="text-center">Frozen products</p>
+        </div>
+        <div class="col-md-1" id="@Departments.Baby">
+            <img src="~/images/ProductNav/Baby food.png" class="NavIco" />
+            <p class="text-center">Baby food</p>
+        </div>
+        <div class="col-md-1" id="@Departments.Sushi">
+            <img src="~/images/ProductNav/Sushi.png" class="NavIco" />
+            <p class="text-center">Sushi</p>
+        </div>
+        <div class="col-md-1" id="@Departments.Diabetic">
+            <img src="~/images/ProductNav/Diabetic.png" class="NavIco" />
+            <p class="text-center">Diabetic</p>
+        </div>
+    </div>
+</div>
+<div class="corousel">
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
