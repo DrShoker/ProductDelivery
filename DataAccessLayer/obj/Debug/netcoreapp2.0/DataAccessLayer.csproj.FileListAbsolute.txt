@@ -34,3 +34,12 @@ C:\Users\maksy\source\repos\ProductDelivery\DataAccessLayer\obj\Debug\netcoreapp
 C:\Users\maksy\source\repos\ProductDelivery\DataAccessLayer\obj\Debug\netcoreapp2.0\DataAccessLayer.dll
 C:\Users\maksy\source\repos\ProductDelivery\DataAccessLayer\obj\Debug\netcoreapp2.0\DataAccessLayer.pdb
 C:\Users\maksy\source\repos\ProductDelivery\DataAccessLayer\obj\Debug\netcoreapp2.0\DataAccessLayer.csprojResolveAssemblyReference.cache
+C:\Users\Shok\Desktop\asdasdasd\DataAccessLayer\bin\Debug\netcoreapp2.0\DataAccessLayer.deps.json
+C:\Users\Shok\Desktop\asdasdasd\DataAccessLayer\bin\Debug\netcoreapp2.0\DataAccessLayer.dll
+C:\Users\Shok\Desktop\asdasdasd\DataAccessLayer\bin\Debug\netcoreapp2.0\DataAccessLayer.pdb
+C:\Users\Shok\Desktop\asdasdasd\DataAccessLayer\obj\Debug\netcoreapp2.0\DataAccessLayer.csprojResolveAssemblyReference.cache
+C:\Users\Shok\Desktop\asdasdasd\DataAccessLayer\obj\Debug\netcoreapp2.0\DataAccessLayer.csproj.CoreCompileInputs.cache
+C:\Users\Shok\Desktop\asdasdasd\DataAccessLayer\obj\Debug\netcoreapp2.0\DataAccessLayer.AssemblyInfoInputs.cache
+C:\Users\Shok\Desktop\asdasdasd\DataAccessLayer\obj\Debug\netcoreapp2.0\DataAccessLayer.AssemblyInfo.cs
+C:\Users\Shok\Desktop\asdasdasd\DataAccessLayer\obj\Debug\netcoreapp2.0\DataAccessLayer.dll
+C:\Users\Shok\Desktop\asdasdasd\DataAccessLayer\obj\Debug\netcoreapp2.0\DataAccessLayer.pdb

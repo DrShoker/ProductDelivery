@@ -17,8 +17,8 @@ namespace DataAccessLayer.Entities
         public string Manufacturer { get; set; }
         public int Count { get; set; }
 
-        public Image Image { set; get; }
-        public int? ImageId { get; set; }
+        string ImgPath { get; set; }
+
         public List<ProductAttribute> Attributes { get; set; }
         public List<DeliveryProduct> DeliveryAndProduct { get; set; }
     }

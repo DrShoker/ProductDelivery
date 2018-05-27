@@ -44,3 +44,17 @@ C:\Users\maksy\source\repos\ProductDelivery\ProductDelivery\bin\Debug\netcoreapp
 C:\Users\maksy\source\repos\ProductDelivery\ProductDelivery\bin\Debug\netcoreapp2.0\DataAccessLayer.dll
 C:\Users\maksy\source\repos\ProductDelivery\ProductDelivery\bin\Debug\netcoreapp2.0\DataAccessLayer.pdb
 C:\Users\maksy\source\repos\ProductDelivery\ProductDelivery\obj\Debug\netcoreapp2.0\ProductDelivery.csproj.CopyComplete
+C:\Users\Shok\Desktop\asdasdasd\ProductDelivery\bin\Debug\netcoreapp2.0\DataAccessLayer.dll
+C:\Users\Shok\Desktop\asdasdasd\ProductDelivery\bin\Debug\netcoreapp2.0\DataAccessLayer.pdb
+C:\Users\Shok\Desktop\asdasdasd\ProductDelivery\obj\Debug\netcoreapp2.0\ProductDelivery.csprojResolveAssemblyReference.cache
+C:\Users\Shok\Desktop\asdasdasd\ProductDelivery\obj\Debug\netcoreapp2.0\ProductDelivery.csproj.CoreCompileInputs.cache
+C:\Users\Shok\Desktop\asdasdasd\ProductDelivery\obj\Debug\netcoreapp2.0\ProductDelivery.AssemblyInfoInputs.cache
+C:\Users\Shok\Desktop\asdasdasd\ProductDelivery\obj\Debug\netcoreapp2.0\ProductDelivery.AssemblyInfo.cs
+C:\Users\Shok\Desktop\asdasdasd\ProductDelivery\obj\Debug\netcoreapp2.0\ProductDelivery.csproj.CopyComplete
+C:\Users\Shok\Desktop\asdasdasd\ProductDelivery\obj\Debug\netcoreapp2.0\ProductDelivery.dll
+C:\Users\Shok\Desktop\asdasdasd\ProductDelivery\obj\Debug\netcoreapp2.0\ProductDelivery.pdb
+C:\Users\Shok\Desktop\asdasdasd\ProductDelivery\bin\Debug\netcoreapp2.0\ProductDelivery.deps.json
+C:\Users\Shok\Desktop\asdasdasd\ProductDelivery\bin\Debug\netcoreapp2.0\ProductDelivery.runtimeconfig.json
+C:\Users\Shok\Desktop\asdasdasd\ProductDelivery\bin\Debug\netcoreapp2.0\ProductDelivery.runtimeconfig.dev.json
+C:\Users\Shok\Desktop\asdasdasd\ProductDelivery\bin\Debug\netcoreapp2.0\ProductDelivery.dll
+C:\Users\Shok\Desktop\asdasdasd\ProductDelivery\bin\Debug\netcoreapp2.0\ProductDelivery.pdb
