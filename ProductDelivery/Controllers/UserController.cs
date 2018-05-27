@@ -12,6 +12,7 @@ using DataAccessLayer.Repositories;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace ProductDelivery.Controllers
 {
@@ -143,10 +144,10 @@ namespace ProductDelivery.Controllers
             var claims = new List<Claim>
             {
                 new Claim(ClaimsIdentity.DefaultNameClaimType, userName),
-                new Claim(ClaimsIdentity.DefaultRoleClaimType, role)
+                new Claim(ClaimTypes.Role, role)
             };
             // создаем объект ClaimsIdentity
-            ClaimsIdentity id = new ClaimsIdentity(
+            ClaimsIdentity identity = new ClaimsIdentity(
                 claims,
                 "ApplicationCookie",
                 ClaimsIdentity.DefaultNameClaimType,
@@ -155,7 +156,7 @@ namespace ProductDelivery.Controllers
             await HttpContext.
                 SignInAsync(
                 CookieAuthenticationDefaults.AuthenticationScheme,
-                new ClaimsPrincipal(id)
+                new ClaimsPrincipal(identity)
                 );
         }
 

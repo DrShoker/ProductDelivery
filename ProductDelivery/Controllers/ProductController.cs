@@ -22,21 +22,12 @@ namespace ProductDelivery.Controllers
         [HttpGet]
         public IActionResult Catalog(Departments dep)
         {
-            Departments department = (Departments)dep;
+            Departments department = dep;
             List<Product> products = db.Products.GetAll().Where(p=>p.Department==department).
                 OrderBy(p=>p.Type).ToList();
             ViewBag.Dep = dep.ConvertToString();
             return View(products);
         }
-
-        //[Authorize]
-        //[HttpPost]
-        //public int AddToCart(int id)
-        //{
-
-        //    return
-        //}
-
 
         public IActionResult Index()
         {

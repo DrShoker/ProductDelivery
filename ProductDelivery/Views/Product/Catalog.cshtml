@@ -3,6 +3,17 @@
     ViewData["Title"] = "Catalog";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<script>
+    function AddToCard(productId) {
+        axios.post('/card/Add/' + productId)
+            .then(function (response) {
+                if (response.status == 200) {
+                    $('#CardNum').value += 1;
+                }
+            })
+
+    }
+</script>
 <link rel="stylesheet" href="~/css/ProductCatalog.css" />
     <nav class="navbar" id="prodNav">
         <ul class="nav nav-pills">
@@ -14,19 +25,20 @@
     </nav>
     <div class="container catalog">
         <h1 class="text-center">@ViewBag.Dep</h1>
+        <h1 onclick=AddToCard("1")>To card</h1>
         @foreach (var type in Model.GroupBy(p => p.Type))
-        {
+    {
         <h3 class="ProdType" id="@type.Key">@type.Key</h3>
         <hr />
         <div class="row">
             @foreach (var p in type)
-            {
+        {
             <div class="card col-md-3" id="@p.Id">
                 <div class="div-img">
                     <img class="card-img" src="~/images/clock.svg" />
                     <div class="img-info">
                         <div class="text-tocard">
-                            <p>To card</p>
+                            <p onclick=AddToCard("@p.Id")>To card</p>
                         </div>
                         <hr />
                         <div class="text-about">
@@ -48,8 +60,8 @@
                     </div>
                 </div>
             </div>
-            }
+    }
         </div>
-        }
+}
     </div>
 
