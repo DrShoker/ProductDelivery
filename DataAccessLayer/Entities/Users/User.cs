@@ -15,11 +15,6 @@ namespace DataAccessLayer.Entities
         public DateTime BDay { get; set; }
         public int Telephone { get; set; }
         public string Address { get; set; }
-        //Image
-        public byte[] ImgData { set; get; }
-        public int ImgLength { set; get; }
-        public int ImgWidth { set; get; }
-        public int ImgHeight { set; get; }
-        public string ImgContentType { set; get; }
+        public string ImgPath { get; set; }
     }
 }

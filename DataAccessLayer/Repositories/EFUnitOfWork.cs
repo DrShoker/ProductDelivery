@@ -19,7 +19,6 @@ namespace DataAccessLayer.Repositories
         DeliveryProductRepos deliveryProductRepos;
         ProductRepos productRepos;
         ProductAttributeRepos productAttributeRepos;
-        ImageRepos ImageRepos;
 
         public EFUnitOfWork()
         {
@@ -79,14 +78,6 @@ namespace DataAccessLayer.Repositories
             get
             {
                 return DeliveriesProducts ?? new DeliveryProductRepos(db);
-            }
-        }
-
-        public IRepository<Image> Images
-        {
-            get
-            {
-                return ImageRepos ?? new ImageRepos(db);
             }
         }
 
