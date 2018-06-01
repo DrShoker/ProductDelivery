@@ -1,0 +1,137 @@
+﻿@using DataAccessLayer.Enums;
+<div class="container ProductNav">
+    <div class="row">
+        <div class="col-md-1" id="@Departments.FruitVeg">
+            <img src="~/images/ProductNav/Fruits.png" class="NavIco" />
+            <p class="text-center">Fruits, vegetables</p>
+        </div>
+        <div class="col-md-1" id="@Departments.NonAlco">
+            <img src="~/images/ProductNav/Non alcohol.png" class="NavIco" />
+            <p class="text-center">Non alcohol</p>
+        </div>
+        <div class="col-md-1" id="@Departments.Alco">
+            <img src="~/images/ProductNav/Alcohol.png" class="NavIco" />
+            <p class="text-center">Alcohol drinks</p>
+        </div>
+        <div class="col-md-1" id="@Departments.Bakery">
+            <img src="~/images/ProductNav/Bread.png" class="NavIco" />
+            <p class="text-center">Bakery</p>
+        </div>
+        <div class="col-md-1" id="@Departments.Dairy">
+            <img src="~/images/ProductNav/Milk.png" class="NavIco" />
+            <p class="text-center">Dairy</p>
+        </div>
+        <div class="col-md-1" id="@Departments.Pastry">
+            <img src="~/images/ProductNav/Pastry.png" class="NavIco" />
+            <p class="text-center">Pastry</p>
+        </div>
+        <div class="col-md-1" id="@Departments.Gastronomy">
+            <img src="~/images/ProductNav/Fish.png" class="NavIco" />
+            <p class="text-center">Gastronomy</p>
+        </div>
+        <div class="col-md-1" id="@Departments.Grocery">
+            <img src="~/images/ProductNav/Grocery.png" class="NavIco" />
+            <p class="text-center">Grocery</p>
+        </div>
+        <div class="col-md-1" id="@Departments.Frozen">
+            <img src="~/images/ProductNav/Frozen.png" class="NavIco" />
+            <p class="text-center">Frozen products</p>
+        </div>
+        <div class="col-md-1" id="@Departments.Baby">
+            <img src="~/images/ProductNav/Baby food.png" class="NavIco" />
+            <p class="text-center">Baby food</p>
+        </div>
+        <div class="col-md-1" id="@Departments.Sushi">
+            <img src="~/images/ProductNav/Sushi.png" class="NavIco" />
+            <p class="text-center">Sushi</p>
+        </div>
+        <div class="col-md-1" id="@Departments.Diabetic">
+            <img src="~/images/ProductNav/Diabetic.png" class="NavIco" />
+            <p class="text-center">Diabetic</p>
+        </div>
+    </div>
+</div>
+<div class="corousel">
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img class="d-block w-100" src="~/images/black-friday-2925476_1920 (1).jpg" alt="First slide"
+                     width="100">
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src="~/images/a-discount-2986181_1920 (1).jpg" alt="Second slide"
+                     width="100">
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src="~/images/discount1.jpg" alt="Third slide"
+                     width="100">
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 align-self-start">
+            <img src="~/images/discount1.jpg" id="ImgSlide" />
+        </div>
+        <div class="col-md-6 align-self-end DivSlider">
+            <div class="row" id="DivSlide1" 
+                 onmouseover="document.getElementById('ImgSlide').src='/images/office1.svg'">
+                <div class="col-sm-1">
+                    <div class="col-sm-6">
+                    </div>
+                    <div class="col-sm">
+
+                    </div>
+                </div>
+                <div class="col-sm-11">
+                    <h3>Удобство</h3>
+                    <p>Заказывайте продукты домой или в офис</p>
+                </div>
+            </div>
+            <div class="row" id="DivSlide2"
+                 onmouseover="document.getElementById('ImgSlide').src='/images/clock.svg'">
+                <div class="col-sm-1">
+                    <div class="col-sm-6">
+
+                    </div>
+                    <div class="col-sm animation">
+
+                    </div>
+                </div>
+                <div class="col-sm-11">
+                    <h3>Круглосуточное обслуживание</h3>
+                    <p>Наша служба доставки работает кргулосуточно. Технический перерыв с 6.00 до 9.00</p>
+                </div>
+            </div>
+            <div class="row" id="DivSlide3"
+                 onmouseover="document.getElementById('ImgSlide').src='/images/card.svg'">
+                <div class="col-sm-1">
+                    <div class="col-sm-6">
+
+                    </div>
+                    <div class="col-sm">
+
+                    </div>
+                </div>
+                <div class="col-sm-11">
+                    <h3>Система бонусов</h3>
+                    <p>За каждую покупку получайте бонусы</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

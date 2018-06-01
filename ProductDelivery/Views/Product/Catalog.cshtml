@@ -1,0 +1,55 @@
+﻿@model IEnumerable<DataAccessLayer.Entities.Product>
+@{
+    ViewData["Title"] = "Catalog";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link rel="stylesheet" href="~/css/ProductCatalog.css" />
+    <nav class="navbar" id="prodNav">
+        <ul class="nav nav-pills">
+            @foreach (var type in Model.Select(p => p.Type).Distinct())
+            {
+                <li class="nav-item"><a class="nav-link" href="#@type">@type</a></li>
+            }
+        </ul>
+    </nav>
+    <div class="container catalog">
+        <h1 class="text-center">@ViewBag.Dep</h1>
+        @foreach (var type in Model.GroupBy(p => p.Type))
+        {
+        <h3 class="ProdType" id="@type.Key">@type.Key</h3>
+        <hr />
+        <div class="row">
+            @foreach (var p in type)
+            {
+            <div class="card col-md-3" id="@p.Id">
+                <div class="div-img">
+                    <img class="card-img" src="~/images/clock.svg" />
+                    <div class="img-info">
+                        <div class="text-tocard">
+                            <p>To card</p>
+                        </div>
+                        <hr />
+                        <div class="text-about">
+                            <p>Information</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="prod-info">
+                    <b>Weigth</b>: @p.Weight <br />
+                    <b>Manufacturer</b>: @p.Manufacturer
+                    <b>Desription</b>: @p.Description
+                </div>
+                <div class="card-body">
+                    <div class="text-center">
+                        @p.Name
+                    </div>
+                    <div class="text-center">
+                        @((float)p.Price / 100)$
+                    </div>
+                </div>
+            </div>
+            }
+        </div>
+        }
+    </div>
+
