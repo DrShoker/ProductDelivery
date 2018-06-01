@@ -5,3 +5,5 @@
 /.vs
 /WebApplication1/obj
 /WebApplication1
+/ServerPD/bin/Debug/netcoreapp2.0
+/ServerPD/obj/Debug/netcoreapp2.0
