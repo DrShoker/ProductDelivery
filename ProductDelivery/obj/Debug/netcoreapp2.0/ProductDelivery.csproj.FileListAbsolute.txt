@@ -30,7 +30,6 @@ E:\Project\ProductDelivery\ProductDelivery\obj\Debug\netcoreapp2.0\ProductDelive
 E:\Project\ProductDelivery\ProductDelivery\obj\Debug\netcoreapp2.0\ProductDelivery.AssemblyInfo.cs
 E:\Project\ProductDelivery\ProductDelivery\obj\Debug\netcoreapp2.0\ProductDelivery.dll
 E:\Project\ProductDelivery\ProductDelivery\obj\Debug\netcoreapp2.0\ProductDelivery.pdb
-C:\Users\maksy\source\repos\ProductDelivery\ProductDelivery\obj\Debug\netcoreapp2.0\ProductDelivery.csprojResolveAssemblyReference.cache
 C:\Users\maksy\source\repos\ProductDelivery\ProductDelivery\obj\Debug\netcoreapp2.0\ProductDelivery.csproj.CoreCompileInputs.cache
 C:\Users\maksy\source\repos\ProductDelivery\ProductDelivery\obj\Debug\netcoreapp2.0\ProductDelivery.AssemblyInfoInputs.cache
 C:\Users\maksy\source\repos\ProductDelivery\ProductDelivery\obj\Debug\netcoreapp2.0\ProductDelivery.AssemblyInfo.cs
@@ -58,3 +57,4 @@ C:\Users\Shok\Desktop\asdasdasd\ProductDelivery\bin\Debug\netcoreapp2.0\ProductD
 C:\Users\Shok\Desktop\asdasdasd\ProductDelivery\bin\Debug\netcoreapp2.0\ProductDelivery.runtimeconfig.dev.json
 C:\Users\Shok\Desktop\asdasdasd\ProductDelivery\bin\Debug\netcoreapp2.0\ProductDelivery.dll
 C:\Users\Shok\Desktop\asdasdasd\ProductDelivery\bin\Debug\netcoreapp2.0\ProductDelivery.pdb
+C:\Users\maksy\source\repos\ProductDelivery\ProductDelivery\obj\Debug\netcoreapp2.0\ProductDelivery.csprojAssemblyReference.cache

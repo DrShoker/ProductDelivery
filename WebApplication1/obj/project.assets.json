@@ -2,43 +2,6 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v2.0": {
-      "CaptchaGen.NetCore/1.0.2": {
-        "type": "package",
-        "dependencies": {
-          "CoreCompat.System.Drawing": "1.0.0-beta006",
-          "NETStandard.Library": "1.6.1"
-        },
-        "compile": {
-          "lib/netstandard1.3/CaptchaGen.NetCore.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.3/CaptchaGen.NetCore.dll": {}
-        }
-      },
-      "CoreCompat.System.Drawing/1.0.0-beta006": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Win32.Primitives": "4.0.1",
-          "System.Collections.NonGeneric": "4.0.1",
-          "System.Collections.Specialized": "4.0.1",
-          "System.ComponentModel.TypeConverter": "4.1.0",
-          "System.Drawing.Primitives": "4.0.0",
-          "System.IO.FileSystem": "4.0.1",
-          "System.Reflection.TypeExtensions": "4.1.0",
-          "System.Runtime.Extensions": "4.1.0",
-          "System.Runtime.InteropServices": "4.1.0",
-          "System.Runtime.InteropServices.RuntimeInformation": "4.0.0",
-          "System.Text.Encoding.Extensions": "4.0.11",
-          "System.Text.RegularExpressions": "4.1.0",
-          "System.Threading": "4.0.11"
-        },
-        "compile": {
-          "lib/netstandard1.3/CoreCompat.System.Drawing.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.3/CoreCompat.System.Drawing.dll": {}
-        }
-      },
       "Libuv/1.10.0": {
         "type": "package",
         "dependencies": {
@@ -2815,7 +2778,7 @@
           "System.Runtime": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.3/Microsoft.Win32.Primitives.dll": {}
+          "ref/netstandard1.3/_._": {}
         }
       },
       "Microsoft.Win32.Registry/4.4.0": {
@@ -3694,19 +3657,6 @@
         },
         "compile": {
           "ref/netstandard1.5/System.Diagnostics.Tracing.dll": {}
-        }
-      },
-      "System.Drawing.Primitives/4.0.0": {
-        "type": "package",
-        "dependencies": {
-          "System.Runtime": "4.1.0",
-          "System.Runtime.Extensions": "4.1.0"
-        },
-        "compile": {
-          "ref/netstandard1.1/System.Drawing.Primitives.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.1/System.Drawing.Primitives.dll": {}
         }
       },
       "System.Dynamic.Runtime/4.3.0": {
@@ -5078,45 +5028,10 @@
         "runtime": {
           "lib/netstandard1.3/Microsoft.WindowsAzure.Storage.dll": {}
         }
-      },
-      "DataAccessLayer/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v2.0",
-        "dependencies": {
-          "Microsoft.EntityFrameworkCore.SqlServer": "2.0.1",
-          "Microsoft.EntityFrameworkCore.Tools": "2.0.1"
-        },
-        "compile": {
-          "bin/placeholder/DataAccessLayer.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/DataAccessLayer.dll": {}
-        }
       }
     }
   },
   "libraries": {
-    "CaptchaGen.NetCore/1.0.2": {
-      "sha512": "IeKcflaTS0w0NqS3o30HfuvdYRfgFdyl2DXmkVPFOVf79HmTHOExHtiVufdSBUf4hrvcse+simvvBc927M/ssA==",
-      "type": "package",
-      "path": "captchagen.netcore/1.0.2",
-      "files": [
-        "captchagen.netcore.1.0.2.nupkg.sha512",
-        "captchagen.netcore.nuspec",
-        "lib/netstandard1.3/CaptchaGen.NetCore.dll"
-      ]
-    },
-    "CoreCompat.System.Drawing/1.0.0-beta006": {
-      "sha512": "KOBeVy8FHx9zkXrIZAM8OdXPrimROmvfB02fOegrYIelNN/zWhsOwzONgD7gw7wOTJgAFfdwpme5CiMraJj47Q==",
-      "type": "package",
-      "path": "corecompat.system.drawing/1.0.0-beta006",
-      "files": [
-        "corecompat.system.drawing.1.0.0-beta006.nupkg.sha512",
-        "corecompat.system.drawing.nuspec",
-        "lib/net45/CoreCompat.System.Drawing.dll",
-        "lib/netstandard1.3/CoreCompat.System.Drawing.dll"
-      ]
-    },
     "Libuv/1.10.0": {
       "sha512": "GsCf4q+eyaI49rCPlgYxdxa1SQCysXFFdSJWdstrwxytg4+VPYLYrXD4AT2rjHVJ+UF7SSWX9CapWEYaU4ejVQ==",
       "type": "package",
@@ -9597,21 +9512,6 @@
         "system.diagnostics.tracing.nuspec"
       ]
     },
-    "System.Drawing.Primitives/4.0.0": {
-      "sha512": "9lVRG1voBwzLGZkf1XFJrobdZDZ5ZHMU4FVTbXAbzehpN90yYgkUeo9GoEYdvkt/EXaaHZJAeuffXP4JBbY+Ig==",
-      "type": "package",
-      "path": "system.drawing.primitives/4.0.0",
-      "files": [
-        "ThirdPartyNotices.txt",
-        "dotnet_library_license.txt",
-        "lib/net45/System.Drawing.Primitives.dll",
-        "lib/netstandard1.1/System.Drawing.Primitives.dll",
-        "ref/net45/System.Drawing.Primitives.dll",
-        "ref/netstandard1.1/System.Drawing.Primitives.dll",
-        "system.drawing.primitives.4.0.0.nupkg.sha512",
-        "system.drawing.primitives.nuspec"
-      ]
-    },
     "System.Dynamic.Runtime/4.3.0": {
       "sha512": "SNVi1E/vfWUAs/WYKhE9+qlS6KqK0YVhnlT0HQtr8pMIA8YX3lwy3uPMownDwdYISBdmAF/2holEIldVp85Wag==",
       "type": "package",
@@ -13213,17 +13113,10 @@
         "windowsazure.storage.8.1.4.nupkg.sha512",
         "windowsazure.storage.nuspec"
       ]
-    },
-    "DataAccessLayer/1.0.0": {
-      "type": "project",
-      "path": "../DataAccessLayer/DataAccessLayer.csproj",
-      "msbuildProject": "../DataAccessLayer/DataAccessLayer.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.0": [
-      "CaptchaGen.NetCore >= 1.0.2",
-      "DataAccessLayer >= 1.0.0",
       "Microsoft.AspNetCore.All >= 2.0.5",
       "Microsoft.NETCore.App >= 2.0.0",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 2.0.2"
@@ -13231,23 +13124,26 @@
   },
   "packageFolders": {
     "C:\\Users\\maksy\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\maksy\\source\\repos\\ProductDelivery\\ProductDelivery\\ProductDelivery.csproj",
-      "projectName": "ProductDelivery",
-      "projectPath": "C:\\Users\\maksy\\source\\repos\\ProductDelivery\\ProductDelivery\\ProductDelivery.csproj",
+      "projectUniqueName": "C:\\Users\\maksy\\source\\repos\\ProductDelivery\\WebApplication1\\WebApplication1.csproj",
+      "projectName": "WebApplication1",
+      "projectPath": "C:\\Users\\maksy\\source\\repos\\ProductDelivery\\WebApplication1\\WebApplication1.csproj",
       "packagesPath": "C:\\Users\\maksy\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\maksy\\source\\repos\\ProductDelivery\\ProductDelivery\\obj\\",
+      "outputPath": "C:\\Users\\maksy\\source\\repos\\ProductDelivery\\WebApplication1\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
         "C:\\Users\\maksy\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.Fallback.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.0"
@@ -13258,11 +13154,7 @@
       },
       "frameworks": {
         "netcoreapp2.0": {
-          "projectReferences": {
-            "C:\\Users\\maksy\\source\\repos\\ProductDelivery\\DataAccessLayer\\DataAccessLayer.csproj": {
-              "projectPath": "C:\\Users\\maksy\\source\\repos\\ProductDelivery\\DataAccessLayer\\DataAccessLayer.csproj"
-            }
-          }
+          "projectReferences": {}
         }
       },
       "warningProperties": {
@@ -13274,10 +13166,6 @@
     "frameworks": {
       "netcoreapp2.0": {
         "dependencies": {
-          "CaptchaGen.NetCore": {
-            "target": "Package",
-            "version": "[1.0.2, )"
-          },
           "Microsoft.AspNetCore.All": {
             "target": "Package",
             "version": "[2.0.5, )"
