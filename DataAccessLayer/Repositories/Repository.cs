@@ -54,6 +54,10 @@ namespace DataAccessLayer.Repositories
         {
             return set.Find(id);
         }
+        public T Get(string name)
+        {
+            return set.Find(name);
+        }
 
         public IEnumerable<T> GetAll()
         {

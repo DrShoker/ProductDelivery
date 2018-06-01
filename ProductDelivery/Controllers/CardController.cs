@@ -29,7 +29,7 @@ namespace ProductDelivery.Controllers
         public IActionResult AddToCard(int productId)
         {
             card.Add(User.Identity.Name,productId);
-            return Ok();
+            return Ok(card.GetCard(User.Identity.Name).Length);
         }
 
         [Route("card/Remove/{productId}")]

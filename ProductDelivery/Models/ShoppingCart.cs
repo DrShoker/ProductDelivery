@@ -7,11 +7,17 @@ namespace ProductDelivery.Models
 {
     public class ShoppingCart
     {
-        public Dictionary<int,int> products { get; set; }
+        Dictionary<int, int> products = new Dictionary<int, int>();
+
+        public int Length {
+            get {
+                return products.Keys.Count;
+            }
+        }
 
         public void Add(int productId)
         {
-            if(products.Keys.Contains(productId))
+            if(!products.Keys.Contains(productId))
             {
                 products.Add(productId, 1);
             }

@@ -14,7 +14,6 @@ namespace DataAccessLayer.Interfaces
         IRepository<Courier> Couriers { get; }
         IRepository<Delivery> Deliveries { get; }
         IRepository<DeliveryProduct> DeliveriesProducts { get; }
-        IRepository<Entities.Products.Image> Images { get; }
         void Save();
     }
 }

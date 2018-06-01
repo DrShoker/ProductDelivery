@@ -9,11 +9,13 @@ namespace ProductDelivery.Services
 {
     public class CardService : ICardService
     {
-        Dictionary<string, ShoppingCart> card;
+        Dictionary<string, ShoppingCart> card = new Dictionary<string, ShoppingCart>();
+
+        public int Length => card.Keys.Count;
 
         public void Add(string userId,int productId)
         {
-            if(card.Keys.Contains(userId))
+            if(!card.Keys.Contains(userId))
             {
                 ShoppingCart userCard = new ShoppingCart();
                 card.Add(userId, userCard);
@@ -34,9 +36,11 @@ namespace ProductDelivery.Services
             }
         }
 
-        public IEnumerable<Product> GetProducts(string userId)
+        public ShoppingCart GetCard(string userId)
         {
-            throw new NotImplementedException();
+            if (!card.Keys.Contains(userId))
+                return null;
+            return card[userId];
         }
     }
 }

@@ -31,7 +31,7 @@ namespace ProductDelivery
                 {
                     options.LoginPath = new PathString("/User/Login");
                 });
-            services.AddScoped<ICardService, CardService>();
+            services.AddSingleton<ICardService, CardService>();
             services.AddRouting();
             services.AddMvc();
         }
