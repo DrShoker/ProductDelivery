@@ -21,22 +21,22 @@ namespace ServerPD.Controllers
             List<Product> products = db.Products.GetAll().ToList();
             return products;
         }
-        [HttpGet("{dep}")]
+        [HttpGet("getcatalog/{dep}")]
         public IEnumerable<Product> GetCatalog(Departments dep)
         {
             Departments department = (Departments)dep;
             List<Product> products = db.Products.GetAll().Where(p => p.Department == department).OrderBy(p => p.Type).ToList();
             return products;
         }
-        [HttpGet("{id}")]
+        [HttpGet("getproduct/{id}")]
         public IActionResult GetProduct(int id)
-        {
+       {
             Product product = db.Products.Get(id);
             if (product == null)
                 return NotFound();
             return new ObjectResult(product);
         }
-        [HttpGet("{name}")]
+        [HttpGet("getproductsforname/{name}")]
         public IEnumerable<Product> GetProductsForName(string name)
         {
             List<Product> products = db.Products.GetAll().Where(p => p.Name.Contains(name) == true).OrderBy(p =>p.Type).ToList();
@@ -54,7 +54,7 @@ namespace ServerPD.Controllers
             db.Save();
             return CreatedAtRoute("DefaultApi", new { id = product.Id }, product);
         }
-        [HttpDelete("{id}")]
+        [HttpDelete("deletepdroduct/{id}")]
         public IActionResult DeletePdroduct(int id)
         {
             Product product = db.Products.FirstOrDefault(p => p.Id == id);

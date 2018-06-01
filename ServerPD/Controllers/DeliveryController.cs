@@ -23,21 +23,21 @@ namespace ServerPD.Controllers
             return deliveries;
         }
 
-        [HttpGet("{client}")]
+        [HttpGet("getclientdeliveries/{client}")]
         public IEnumerable<Delivery> GetClientDeliveries(Client client)
         {
             List<Delivery> deliveries = db.Deliveries.GetAll().Where(d => d.Client == client).OrderBy(d => d.Date).ToList();
             return deliveries;
         }
 
-        [HttpGet("{courier}")]
+        [HttpGet("/getcourierdeliveries{courier}")]
         public IEnumerable<Delivery> GetCourierDeliveries(Courier courier)
         {
             List<Delivery> deliveries = db.Deliveries.GetAll().Where(d => d.Courier == courier).OrderBy(d => d.Date).ToList();
             return deliveries;
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("getdelivery/{id}")]
         public IActionResult GetDelivery(int id)
         {
             Delivery delivery = db.Deliveries.Get(id);
@@ -58,7 +58,7 @@ namespace ServerPD.Controllers
             db.Save();
             return CreatedAtRoute("DefaultApi", new { id = delivery.Id }, delivery);
         }
-        [HttpDelete("{id}")]
+        [HttpDelete("deletedelivery/{id}")]
         public IActionResult DeleteDelivery(int id)
         {
             Delivery delivery = db.Deliveries.FirstOrDefault(d => d.Id == id);
