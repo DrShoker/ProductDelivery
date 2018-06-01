@@ -1,8 +1,8 @@
 .vs/
 DataAccessLayer/bin/
 DataAccessLayer/obj/
+ServerPD/bin/
+ServerPD/obj/
 ProductDelivery/.vs/
 ProductDelivery/bin/
 ProductDelivery/obj/
-ServerPD/bin/
-ServerPD/obj/
