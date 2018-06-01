@@ -54,8 +54,8 @@ namespace ServerPD.Controllers
             db.Save();
             return CreatedAtRoute("DefaultApi", new { id = product.Id }, product);
         }
-        [HttpDelete("deletepdroduct/{id}")]
-        public IActionResult DeletePdroduct(int id)
+        [HttpDelete("deleteproduct/{id}")]
+        public IActionResult DeleteProduct(int id)
         {
             Product product = db.Products.FirstOrDefault(p => p.Id == id);
             if (product == null)
