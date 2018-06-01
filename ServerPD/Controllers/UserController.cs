@@ -20,14 +20,14 @@ namespace ServerPD.Controllers
         EFUnitOfWork db = new EFUnitOfWork();
 
         [HttpGet]
-        public IEnumerable<Client> GetProducts()
+        public IEnumerable<Client> GetClients()
         {
             List<Client> clients = db.Clients.GetAll().ToList();
             return clients;
         }
 
         [HttpGet("getclientbyid/{id}")]
-        public IActionResult GetClientDeliveries(int id)
+        public IActionResult GetClientById(int id)
         {
             Client client = db.Clients.Get(id);
             if (client == null)
@@ -54,7 +54,7 @@ namespace ServerPD.Controllers
             return CreatedAtRoute("DefaultApi", new { id = client.Id }, client);
         }
 
-        [HttpDelete("deletepdroduct/{id}")]
+        [HttpDelete("deleteclient/{id}")]
         public IActionResult DeleteClient(int id)
         {
             Product product = db.Products.FirstOrDefault(p => p.Id == id);
