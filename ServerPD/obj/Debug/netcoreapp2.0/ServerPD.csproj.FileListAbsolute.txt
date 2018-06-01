@@ -9,3 +9,8 @@ C:\Users\Shok\Desktop\asdasdasd\ServerPD\obj\Debug\netcoreapp2.0\ServerPD.Assemb
 C:\Users\Shok\Desktop\asdasdasd\ServerPD\bin\Debug\netcoreapp2.0\ServerPD.pdb
 C:\Users\Shok\Desktop\asdasdasd\ServerPD\obj\Debug\netcoreapp2.0\ServerPD.dll
 C:\Users\Shok\Desktop\asdasdasd\ServerPD\obj\Debug\netcoreapp2.0\ServerPD.pdb
+C:\Users\Shok\Desktop\asdasdasd\ServerPD\bin\Debug\netcoreapp2.0\DataAccessLayer.dll
+C:\Users\Shok\Desktop\asdasdasd\ServerPD\bin\Debug\netcoreapp2.0\ProductDelivery.dll
+C:\Users\Shok\Desktop\asdasdasd\ServerPD\bin\Debug\netcoreapp2.0\DataAccessLayer.pdb
+C:\Users\Shok\Desktop\asdasdasd\ServerPD\bin\Debug\netcoreapp2.0\ProductDelivery.pdb
+C:\Users\Shok\Desktop\asdasdasd\ServerPD\obj\Debug\netcoreapp2.0\ServerPD.csproj.CopyComplete
