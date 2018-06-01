@@ -33,4 +33,3 @@ C:\Users\maksy\source\repos\ProductDelivery\DataAccessLayer\obj\Debug\netcoreapp
 C:\Users\maksy\source\repos\ProductDelivery\DataAccessLayer\obj\Debug\netcoreapp2.0\DataAccessLayer.AssemblyInfo.cs
 C:\Users\maksy\source\repos\ProductDelivery\DataAccessLayer\obj\Debug\netcoreapp2.0\DataAccessLayer.dll
 C:\Users\maksy\source\repos\ProductDelivery\DataAccessLayer\obj\Debug\netcoreapp2.0\DataAccessLayer.pdb
-C:\Users\maksy\source\repos\ProductDelivery\DataAccessLayer\obj\Debug\netcoreapp2.0\DataAccessLayer.csprojAssemblyReference.cache
