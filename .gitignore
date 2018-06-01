@@ -3,3 +3,5 @@
 ################################################################################
 
 /.vs/ProductDelivery
+/WebApplication1/bin/Debug/netcoreapp2.0
+/WebApplication1/obj
