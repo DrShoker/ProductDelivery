@@ -22,7 +22,7 @@ namespace ServerPD.Controllers
             return productAttributes;
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("getproductattribute/{id}")]
         public IActionResult GetProductAttribute(int id)
         {
             ProductAttribute productAttribute = db.ProductAttributes.Get(id);
@@ -42,6 +42,31 @@ namespace ServerPD.Controllers
             db.ProductAttributes.Create(productAttribute);
             db.Save();
             return CreatedAtRoute("DefaultApi", new { id = productAttribute.Id }, productAttribute);
+        }
+
+        [HttpDelete("deletepdroductattribute/{id}")]
+        public IActionResult DeletePdroductAttribute(int id)
+        {
+            ProductAttribute productAttribute = db.ProductAttributes.FirstOrDefault(p => p.Id == id);
+            if (productAttribute == null)
+                return NotFound();
+            db.Products.Delete(id);
+            db.Save();
+            return Ok(productAttribute);
+        }
+        [HttpPut]
+        public IActionResult EditProduct(int id, ProductAttribute productAttribute)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest();
+
+            if (id != productAttribute.Id)
+                return BadRequest();
+
+            db.ProductAttributes.Update(productAttribute);
+            db.Save();
+
+            return Ok(productAttribute);
         }
     }
 }
