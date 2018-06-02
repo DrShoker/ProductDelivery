@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Routing;
 using DataAccessLayer.Entities;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using ProductDelivery.Services;
 
 namespace ProductDelivery
 {
@@ -30,7 +31,7 @@ namespace ProductDelivery
                 {
                     options.LoginPath = new PathString("/User/Login");
                 });
-
+            services.AddSingleton<ICardService, CardService>();
             services.AddRouting();
             services.AddMvc();
         }
