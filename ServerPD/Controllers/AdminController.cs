@@ -36,7 +36,7 @@ namespace ServerPD.Controllers
         }
 
         [HttpGet("getadminbyname/{name}")]
-        public IEnumerable<Admin> GetClientByName(string name)
+        public IEnumerable<Admin> GetAdminByName(string name)
         {
             List<Admin> admins = db.Admins.GetAll().Where(a => a.Name.Contains(name)).ToList();
             return admins;

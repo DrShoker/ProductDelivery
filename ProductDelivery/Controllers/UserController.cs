@@ -99,7 +99,7 @@ namespace ProductDelivery.Controllers
             httpClient.BaseAddress = new Uri(UrlContacts.BaseUrl);
             httpClient.DefaultRequestHeaders.Clear();
             httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            HttpResponseMessage response = httpClient.PostAsync($"api/Product/", new StringContent(clientJson, Encoding.UTF8, "application/json")).Result;
+            HttpResponseMessage response = httpClient.PostAsync($"api/User/", new StringContent(clientJson, Encoding.UTF8, "application/json")).Result;
 
             data = response.Content.ReadAsStringAsync().Result;
             IEnumerable<Client> clients = JsonConvert.DeserializeObject<IEnumerable<Client>>(data);
