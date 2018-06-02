@@ -65,12 +65,9 @@ namespace ServerPD.Controllers
             return Ok(product);
         }
         [HttpPut]
-        public IActionResult EditProduct(int id, Product product)
+        public IActionResult EditProduct(Product product)
         {
             if (!ModelState.IsValid)
-                return BadRequest();
-
-            if (id != product.Id)
                 return BadRequest();
 
             db.Products.Update(product);

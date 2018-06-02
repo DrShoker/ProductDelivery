@@ -10,6 +10,7 @@ using System.Net.Http;
 using ProductDelivery.Models;
 using System.Net.Http.Headers;
 using Newtonsoft.Json;
+using System.Text;
 
 namespace ProductDelivery.Controllers
 {
@@ -64,6 +65,103 @@ namespace ProductDelivery.Controllers
             return View(products);
 
         }
+
+        [HttpGet]
+        public IActionResult GetProduct(int id)
+        {
+            string data;
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri(UrlContacts.BaseUrl);
+            client.DefaultRequestHeaders.Clear();
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            HttpResponseMessage response = client.GetAsync($"api/Product/getproduct/{id}").Result;
+
+
+            data = response.Content.ReadAsStringAsync().Result;
+            IEnumerable<Product> products = JsonConvert.DeserializeObject<IEnumerable<Product>>(data);
+            //ViewBag.Result = products;
+
+            return View(products);
+
+        }
+
+        [HttpGet]
+        public IActionResult GetProductsForName(string name)
+        {
+            string data;
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri(UrlContacts.BaseUrl);
+            client.DefaultRequestHeaders.Clear();
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            HttpResponseMessage response = client.GetAsync($"api/Product/getproductsforname/{name}").Result;
+
+
+            data = response.Content.ReadAsStringAsync().Result;
+            IEnumerable<Product> products = JsonConvert.DeserializeObject<IEnumerable<Product>>(data);
+            //ViewBag.Result = products;
+
+            return View(products);
+
+        }
+
+        [HttpGet]
+        public ActionResult CreateProduct(int id = 0)
+        {
+
+            return View(new Product());
+        }
+
+
+        [HttpPost]
+        public IActionResult CreateProduct(Product product)
+        {
+            var productJson = JsonConvert.SerializeObject(product);
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri(UrlContacts.BaseUrl);
+            client.DefaultRequestHeaders.Clear();
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            HttpResponseMessage response = client.PostAsync($"api/Product/", new StringContent(productJson, Encoding.UTF8, "application/json")).Result;
+            //ViewBag.Result = products;
+
+            return RedirectToAction("GetProducts");
+
+        }
+
+            [HttpPost]
+            public IActionResult DeleteProduct(int id)
+        {
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri(UrlContacts.BaseUrl);
+            client.DefaultRequestHeaders.Clear();
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            HttpResponseMessage response = client.DeleteAsync($"api/Product/deleteproduct/{id}").Result;
+            //ViewBag.Result = products;
+
+            return RedirectToAction("GetProducts");
+        }
+
+        [HttpGet]
+        public IActionResult EditProduct(int id)
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult EditProduct(Product product)
+        {
+            var productJson = JsonConvert.SerializeObject(product);
+            string data;
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri(UrlContacts.BaseUrl);
+            client.DefaultRequestHeaders.Clear();
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            HttpResponseMessage response = client.PutAsync($"api/Product/", new StringContent(productJson, Encoding.UTF8, "application/json")).Result;
+            //ViewBag.Result = products;
+
+            return RedirectToAction("GetProducts");
+
+        }
+
     }
 
         //[HttpGet]
