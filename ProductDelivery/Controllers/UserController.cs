@@ -1,18 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Mvc;
-using System.Security.Claims;
-using ProductDelivery.Models;
-using ProductDelivery.Models.ViewModels;
 using DataAccessLayer.Entities;
 using DataAccessLayer.Repositories;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using ProductDelivery.Models;
+using ProductDelivery.Models.ViewModels;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Security.Claims;
+using System.Text;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace ProductDelivery.Controllers
 {
@@ -23,6 +25,112 @@ namespace ProductDelivery.Controllers
         {
             string role = User.FindFirst(x => x.Type == ClaimsIdentity.DefaultRoleClaimType).Value;
             return Content(role);
+        }
+
+        [HttpGet]
+        public IActionResult GetClients()
+        {
+            string data;
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri(UrlContacts.BaseUrl);
+            client.DefaultRequestHeaders.Clear();
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            HttpResponseMessage response = client.GetAsync("api/User/").Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                data = response.Content.ReadAsStringAsync().Result;
+                ViewBag.Result = JsonConvert.DeserializeObject<IEnumerable<Client>>(data);
+            }
+
+            else
+                ViewBag.Result = "Error";
+            return RedirectToAction("GetClients");
+        }
+
+        [HttpGet]
+        public IActionResult GetClientById(int id)
+        {
+            string data;
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri(UrlContacts.BaseUrl);
+            client.DefaultRequestHeaders.Clear();
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            HttpResponseMessage response = client.GetAsync($"api/User/getclientbyid/{id}").Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                data = response.Content.ReadAsStringAsync().Result;
+                ViewBag.Result = JsonConvert.DeserializeObject<Client>(data);
+            }
+
+            else
+                ViewBag.Result = "Error";
+            return RedirectToAction("GetClients");
+        }
+
+        [HttpGet]
+        public IActionResult GetClientByName(string name)
+        {
+            string data;
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri(UrlContacts.BaseUrl);
+            client.DefaultRequestHeaders.Clear();
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            HttpResponseMessage response = client.GetAsync($"api/User/getclientbyid/{name}").Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                data = response.Content.ReadAsStringAsync().Result;
+                ViewBag.Result = JsonConvert.DeserializeObject<IEnumerable<Client>>(data);
+            }
+
+            else
+                ViewBag.Result = "Error";
+            return RedirectToAction("GetClients");
+        }
+
+        [HttpPost]
+        public IActionResult CreateClient(Client client)
+        {
+            var clientJson = JsonConvert.SerializeObject(client);
+            string data;
+            HttpClient httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri(UrlContacts.BaseUrl);
+            httpClient.DefaultRequestHeaders.Clear();
+            httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            HttpResponseMessage response = httpClient.PostAsync($"api/User/", new StringContent(clientJson, Encoding.UTF8, "application/json")).Result;
+
+            data = response.Content.ReadAsStringAsync().Result;
+            IEnumerable<Client> clients = JsonConvert.DeserializeObject<IEnumerable<Client>>(data);
+            //ViewBag.Result = products;
+            return RedirectToAction("GetClients");
+        }
+
+        [HttpDelete]
+        public IActionResult DeleteClient(int id)
+        {
+            string data;
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri(UrlContacts.BaseUrl);
+            client.DefaultRequestHeaders.Clear();
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            HttpResponseMessage response = client.DeleteAsync($"api/User/deleteclient/{id}").Result;
+
+            return RedirectToAction("GetClients");
+        }
+
+        [HttpPut]
+        public IActionResult EditClient(Client client)
+        {
+            var clientJson = JsonConvert.SerializeObject(client);
+            HttpClient httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri(UrlContacts.BaseUrl);
+            httpClient.DefaultRequestHeaders.Clear();
+            httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            HttpResponseMessage response = httpClient.PutAsync("api/User/", new StringContent(clientJson, Encoding.UTF8, "application/json")).Result;
+
+            return RedirectToAction("GetClients");
         }
 
         [HttpGet]
