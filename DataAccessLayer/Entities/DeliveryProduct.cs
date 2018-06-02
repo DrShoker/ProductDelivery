@@ -7,6 +7,20 @@ namespace DataAccessLayer.Entities
 {
     public class DeliveryProduct
     {
+        public DeliveryProduct()
+        {
+
+        }
+
+        public DeliveryProduct(
+            int prodId,
+            int count
+            )
+        {
+            ProductId = prodId; 
+            Count = count;
+        }
+
         public int Id { get; set; }
         public int Count { get; set; }
 
