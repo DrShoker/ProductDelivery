@@ -46,19 +46,23 @@ namespace ServerPD.Controllers
             return new ObjectResult(delivery);
         }
 
-        [HttpPost]
-        public IActionResult CreateDelivery(Delivery delivery)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-            
 
-            db.Deliveries.Create(delivery);
-            db.Save();
-            return CreatedAtRoute("DefaultApi", new { id = delivery.Id }, delivery);
+        [HttpPost]
+        public IActionResult CreateDelivery([FromBody] Delivery delivery)
+        {
+            try
+            {
+                delivery.Client = db.Clients.FirstOrDefault(c => c.Email == delivery.Client.Email);
+                db.Deliveries.Create(delivery);
+                db.Save();
+                return CreatedAtRoute("DefaultApi", new { id = delivery.Id }, delivery);
+            }
+            catch(Exception e)
+            {
+                return BadRequest(e);
+            }
         }
+
         [HttpDelete("deletedelivery/{id}")]
         public IActionResult DeleteDelivery(int id)
         {

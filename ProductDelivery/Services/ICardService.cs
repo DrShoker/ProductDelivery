@@ -17,6 +17,6 @@ namespace ProductDelivery.Services
 
         void Remove(string userId, int productId);
 
-        void CheckOut();
+        void CheckOut(string userId);
     }
 }

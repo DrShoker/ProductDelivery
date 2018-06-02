@@ -15,6 +15,11 @@ namespace DataAccessLayer.Entities
             Date = DateTime.Now;
         }
 
+        public Delivery(List<DeliveryProduct> products)
+        {
+            DeliveryAndProducts = products;
+        }
+
         public int ClientId { get; set; }
         public Client Client { get; set; }
         public int CourierId { get; set; }

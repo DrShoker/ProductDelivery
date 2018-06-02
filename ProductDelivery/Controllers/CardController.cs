@@ -37,6 +37,15 @@ namespace ProductDelivery.Controllers
             return Ok(res);
         }
 
+        [HttpPost]
+        [Route("card/CheckOut")]
+        public IActionResult CheckOut()
+        {
+            cardservice.CheckOut(User.Identity.Name);
+            return RedirectToAction("Index","Home");
+        }
+
+        [HttpPost]
         [Route("card/Add/{productId}")]
         public IActionResult AddToCard(int productId)
         {

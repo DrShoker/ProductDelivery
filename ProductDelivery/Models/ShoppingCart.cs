@@ -2,22 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Authentication.Facebook;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using System.IO;
-using System.Runtime.Serialization;
-using Newtonsoft.Json;
-using System.Runtime.Serialization.Json;
 
 namespace ProductDelivery.Models
 {
@@ -38,6 +22,13 @@ namespace ProductDelivery.Models
             }
         }
 
+        public Delivery ToDelivery()
+        {
+            List<DeliveryProduct> pd = products.Keys.Select(p=>new DeliveryProduct(p.Id,products[p])).ToList();
+            var delivery = new Delivery(pd);
+            return delivery;
+        }
+
         public int this[int prodId]
         {
             get
@@ -49,37 +40,15 @@ namespace ProductDelivery.Models
             }
         }
 
-        public void Add(int productId)
+        public void Add(Product product)
         {
-            if (!products.Keys.Select(p => p.Id).Contains(productId))
+            if (!products.Keys.Select(p => p.Id).Contains(product.Id))
             {
-                using (HttpClient client = new HttpClient())
-                {
-                    client.BaseAddress = new Uri("http://localhost:58123");
-
-                    client.DefaultRequestHeaders.Clear();
-
-                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-                    string adress = "/api/Product/getproduct/" + productId;
-
-                    HttpResponseMessage response = client.GetAsync(adress).Result;
-
-                    if (response.IsSuccessStatusCode)
-                    {
-                        DataContractJsonSerializer jsonFormatter = new DataContractJsonSerializer(typeof(Product));
-                        var data = response.Content.ReadAsStringAsync().Result;
-                        Product prodToAdd = JsonConvert.DeserializeObject<Product>(data);
-                        if (!products.Keys.Select(p => p.Id).Contains(prodToAdd.Id))
-                        {
-                            products.Add(prodToAdd, 1);
-                        }
-                    }
-                }
+                products.Add(product, 1);
             }
             else
             {
-                products[products.Keys.First(p=> p.Id == productId)]++;
+                products[products.Keys.First(p=> p.Id == product.Id)]++;
             }
         }
 
