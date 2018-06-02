@@ -13,38 +13,43 @@ namespace ProductDelivery.Controllers
     [Authorize]
     public class CardController : Controller
     {
-        private readonly ICardService card;
-        private readonly IConfiguration AppConfiguration;
-
-        public CardController(IConfiguration config)
-        {
-            AppConfiguration = config;
-        }
+        private readonly ICardService cardservice;
 
         public CardController(ICardService card)
         {
-            this.card = card;
+            this.cardservice = card;
         }
 
         [Route("card")]
         public IActionResult Index()
         {
-            card.GetCard(User.Identity.Name);
-            return View();
+            return View(cardservice.GetCard(User.Identity.Name));
+        }
+
+        [HttpGet]
+        [Route("card/length")]
+        public IActionResult CardLength()
+        {
+            int res = 0;
+            var card = cardservice.GetCard(User.Identity.Name);
+            if (card != null)
+                res = card.Length;
+            return Ok(res);
         }
 
         [Route("card/Add/{productId}")]
         public IActionResult AddToCard(int productId)
         {
-            card.Add(User.Identity.Name,productId);
-            return Ok(card.GetCard(User.Identity.Name).Length);
+            cardservice.Add(User.Identity.Name,productId);
+            return Ok(cardservice.GetCard(User.Identity.Name).Length);
         }
 
+        [HttpPost]
         [Route("card/Remove/{productId}")]
         public IActionResult RemoveFromCard(int productId)
         {
-            card.Remove(User.Identity.Name, productId);
-            return Ok();
+            cardservice.Remove(User.Identity.Name, productId);
+            return RedirectToAction("Index");
         }
     }
 }
