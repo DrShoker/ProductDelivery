@@ -41,7 +41,7 @@ namespace ServerPD.Controllers
             List<Admin> admins = db.Admins.GetAll().Where(a => a.Name.Contains(name)).ToList();
             return admins;
         }
-
+        [HttpPost]
         public IActionResult CreateAdmin(Admin admin)
         {
             if (!ModelState.IsValid)

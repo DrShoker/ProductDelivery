@@ -37,7 +37,7 @@ namespace ServerPD.Controllers
             List<Courier> couriers = db.Couriers.GetAll().Where(c => c.Name.Contains(name)).ToList();
             return couriers;
         }
-
+        [HttpPost]
         public IActionResult CreateCourier(Courier courier)
         {
             if (!ModelState.IsValid)
