@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DataAccessLayer.Entities;
+using Microsoft.Extensions.Configuration;
 using ProductDelivery.Models;
 
 namespace ProductDelivery.Services
@@ -10,8 +11,13 @@ namespace ProductDelivery.Services
     public class CardService : ICardService
     {
         Dictionary<string, ShoppingCart> card = new Dictionary<string, ShoppingCart>();
-
+        private readonly IConfiguration config;
         public int Length => card.Keys.Count;
+
+        public CardService(IConfiguration config)
+        {
+            this.config = config;
+        }
 
         public void Add(string userId,int productId)
         {

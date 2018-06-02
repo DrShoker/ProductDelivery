@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using ProductDelivery.Services;
 using DataAccessLayer.Entities;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.Configuration;
 
 namespace ProductDelivery.Controllers
 {
@@ -13,6 +14,12 @@ namespace ProductDelivery.Controllers
     public class CardController : Controller
     {
         private readonly ICardService card;
+        private readonly IConfiguration AppConfiguration;
+
+        public CardController(IConfiguration config)
+        {
+            AppConfiguration = config;
+        }
 
         public CardController(ICardService card)
         {
@@ -22,6 +29,7 @@ namespace ProductDelivery.Controllers
         [Route("card")]
         public IActionResult Index()
         {
+            card.GetCard(User.Identity.Name);
             return View();
         }
 
