@@ -24,7 +24,7 @@ namespace ServerPD.Controllers
         [HttpGet("getcatalog/{dep}")]
         public IEnumerable<Product> GetCatalog(Departments dep)
         {
-            Departments department = (Departments)dep;
+            Departments department = dep;
             List<Product> products = db.Products.GetAll().Where(p => p.Department == department).OrderBy(p => p.Type).ToList();
             return products;
         }
