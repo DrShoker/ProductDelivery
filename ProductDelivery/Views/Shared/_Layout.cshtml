@@ -46,8 +46,8 @@
                 @{string role = User.FindFirst(x => x.Type == ClaimsIdentity.DefaultRoleClaimType)?.Value;
                     if (role == "client")
                     {
+                        <h3>Card <span id="CardNum">0</span></h3>
                         <div class="dropdown show">
-                            <p id="CardNum">0</p>
                             <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">@User.Identity.Name.ToString()</a>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                 <a class="dropdown-item" href="#">Личный кабинет</a>
@@ -55,6 +55,16 @@
                                 <a class="dropdown-item" href="/User/Logout">Выйти из аккаунта</a>
                             </div>
                         </div>
+                        <script>
+                            axios.get('/card/length')
+                                .then(function (response) {
+                                    if (response.status == 200) {
+                                        console.log(response);
+                                        var label = document.getElementById("CardNum");
+                                        label.innerHTML = response.data
+                                    }
+                                })
+                        </script>
                     }
                     else if (role == "admin")
                     {
@@ -83,15 +93,15 @@
                     }
                     else
                     {
-                                <a class="btn btn-secondary" href="/User/Login" role="button">SingIn</a>
+                        <a class="btn btn-secondary" href="/User/Login" role="button">SingIn</a>
 
-                                            }
+                    }
 
 
 
 
                 }
-                
+
             </form>
         </div>
     </nav>

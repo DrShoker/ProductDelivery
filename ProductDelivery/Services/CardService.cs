@@ -37,8 +37,8 @@ namespace ProductDelivery.Services
         public void Remove(string userId,int productId)
         {
             if(card.Keys.Contains(userId))
-            { 
-                    card[userId].Remove(productId);
+            {
+                card[userId].Remove(productId);
             }
         }
 

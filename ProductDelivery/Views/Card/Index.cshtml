@@ -1,0 +1,43 @@
+﻿@model ShoppingCart
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Your card, @User.Identity.Name</h2>
+@if(Model!=null)
+{
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Count</th>
+                <th></th>
+            </tr>
+        </thead>
+        @{double sum = 0;}
+        <tbody>
+            @foreach (var p in Model.Products)
+            {
+                double price = (double)p.Price / 100;
+                sum += price * Model[p.Id];
+                <tr>
+                    <td>@p.Name</td>
+                    <td>@price $</td>
+                    <td>@Model[p.Id]</td>
+                    <th>
+                        <form method="post" action="card/Remove/@p.Id">
+                            <button class="btn btn-danger">-1</button>
+                        </form>
+                    </th>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <h1>Sum: @sum $</h1>
+}
+else
+{
+    <h2>You haven't order anything yet</h2>
+}
