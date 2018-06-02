@@ -28,7 +28,7 @@ namespace ProductDelivery.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Client> GetClients()
+        public IActionResult GetClients()
         {
             string data;
             HttpClient client = new HttpClient();
@@ -45,7 +45,7 @@ namespace ProductDelivery.Controllers
 
             else
                 ViewBag.Result = "Error";
-            return View();
+            return RedirectToAction("GetClients");
         }
 
         [HttpGet]
@@ -66,11 +66,11 @@ namespace ProductDelivery.Controllers
 
             else
                 ViewBag.Result = "Error";
-            return View();
+            return RedirectToAction("GetClients");
         }
 
         [HttpGet]
-        public IEnumerable<Client> GetClientByName(string name)
+        public IActionResult GetClientByName(string name)
         {
             string data;
             HttpClient client = new HttpClient();
@@ -87,7 +87,7 @@ namespace ProductDelivery.Controllers
 
             else
                 ViewBag.Result = "Error";
-            return View();
+            return RedirectToAction("GetClients");
         }
 
         [HttpPost]
