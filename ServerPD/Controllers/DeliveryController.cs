@@ -53,6 +53,10 @@ namespace ServerPD.Controllers
             try
             {
                 delivery.Client = db.Clients.FirstOrDefault(c => c.Email == delivery.Client.Email);
+
+                //TODO: create distribute system
+                delivery.CourierId = 2;
+
                 db.Deliveries.Create(delivery);
                 db.Save();
                 return CreatedAtRoute("DefaultApi", new { id = delivery.Id }, delivery);
