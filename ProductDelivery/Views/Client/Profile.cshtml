@@ -1,4 +1,6 @@
 ﻿
+@using DataAccessLayer.Entities
+@model Client
 @{
     ViewData["Title"] = "Profile";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -6,11 +8,34 @@
 
 <h2>@User.Identity.Name profile</h2>
 
-<table class="table">
-    <thead class="thead-dark">
-
-    <tbody>
-        
-    </tbody>
-</table>
+@if (Model.Deliveries.Count > 0)
+{
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>Date</th>
+                <th>CourierId</th>
+                <th>Products</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var delivery in Model.Deliveries)
+            {
+              <tr>
+                  <td>@delivery.Date</td>
+                  <td>@delivery.CourierId</td>
+                  <td>
+                      <ul>
+                          <li>Microsoft</li>
+                      </ul>
+                  </td>
+              </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <h3>this user hasn't got deliveries</h3> 
+}
 

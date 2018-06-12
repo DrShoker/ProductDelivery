@@ -49,7 +49,7 @@ namespace DataAccessLayer.Repositories
             }
         }
 
-        public IRepository<Client> Clients
+        public IClientRepository Clients
         {
             get
             {

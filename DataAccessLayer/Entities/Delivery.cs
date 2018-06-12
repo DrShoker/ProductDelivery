@@ -24,6 +24,6 @@ namespace DataAccessLayer.Entities
         public Client Client { get; set; }
         public int CourierId { get; set; }
         public Courier Courier { get; set; }
-        public List<DeliveryProduct> DeliveryAndProducts { get; set; }
+        public ICollection<DeliveryProduct> DeliveryAndProducts { get; set; }
     }
 }

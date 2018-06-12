@@ -10,6 +10,6 @@ namespace DataAccessLayer.Entities
         public bool IsBlocked { get; set; }
         public int Misses { get; set; }
 
-        public List<Delivery> Deliveries { get; set; }
+        public ICollection<Delivery> Deliveries { get; set; }
     }
 }
