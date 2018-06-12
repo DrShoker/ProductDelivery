@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using DataAccessLayer.Entities;
 using DataAccessLayer.Repositories;
 using DataAccessLayer.Enums;
+using ServerPD.Interfaces;
 
 namespace ServerPD.Controllers
 {
@@ -14,6 +15,15 @@ namespace ServerPD.Controllers
     [Route("api/Delivery")]
     public class DeliveryController : Controller
     {
+        private readonly IEmailSender _emailSender;
+        private readonly IBodyBuilder _bodyBuilder;
+
+        public DeliveryController(IEmailSender emailSender, IBodyBuilder bodyBuilder)
+        {
+            _emailSender = emailSender;
+            _bodyBuilder = bodyBuilder;
+        }
+
         EFUnitOfWork db = new EFUnitOfWork();
 
         [HttpGet]
@@ -92,6 +102,11 @@ namespace ServerPD.Controllers
                 return BadRequest();
 
             delivery.Status = DeliveryStatus.Completed;
+
+
+            string body = _bodyBuilder.CreateBody(delivery);
+
+            _emailSender.Send(body, delivery.Client.Email);
 
             db.Deliveries.Update(delivery);
             db.Save();

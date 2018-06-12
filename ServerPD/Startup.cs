@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
+using ServerPD.Helper;
+using ServerPD.Helpers;
+using ServerPD.Interfaces;
 using Swashbuckle.AspNetCore.Swagger;
 
 namespace ServerPD
@@ -25,6 +22,10 @@ namespace ServerPD
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+
+            services.AddTransient<IEmailSender, EmailSender>();
+            services.AddTransient<IBodyBuilder, BodyBuilder>();
+
 
             services.AddSwaggerGen(c =>
             {
