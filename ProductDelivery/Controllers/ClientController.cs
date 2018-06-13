@@ -25,20 +25,18 @@ namespace ProductDelivery.Controllers
         }
 
         [HttpGet]
-        [Route("Client/{Id}")]
-        public IActionResult Profile(int Id)
-
-
+        [Route("Client/{email}")]
+        public IActionResult Profile(string email)
         {
-
-            string adress = "/api/Client/getclientbyid/" + Id;
+            string adress = "/api/Client/getclientbyemail/" + email;
             HttpResponseMessage response = client.GetAsync(adress).Result;
+            Client clientModel = null;
             if (response.IsSuccessStatusCode)
             {
                 var data = response.Content.ReadAsStringAsync().Result;
-                Client client = JsonConvert.DeserializeObject<Client>(data);
+                clientModel = JsonConvert.DeserializeObject<Client>(data);
             }
-            return View(client);
+            return View("Profile", clientModel);
         }
     }
 }

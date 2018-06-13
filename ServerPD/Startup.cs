@@ -9,6 +9,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Swashbuckle.AspNetCore.Swagger;
+using DataAccessLayer.Interfaces;
+using ServerPD.Services;
+using DataAccessLayer.Repositories;
 
 namespace ServerPD
 {
@@ -25,7 +28,8 @@ namespace ServerPD
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-
+            services.AddScoped<IUnitOfWork, EFUnitOfWork>();
+            services.AddSingleton<ITrackService, TrackService>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new Info

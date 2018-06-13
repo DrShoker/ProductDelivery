@@ -47,12 +47,11 @@
                 @{string role = User.FindFirst(x => x.Type == ClaimsIdentity.DefaultRoleClaimType)?.Value;
                     if (role == "client")
                     {
-                        <h3 class="cardNav"><i class="fas fa-shopping-cart"></i><span id="CardNum">0</span></h3>
+                        <h3 class="cardNav" onclick="window.location='/card'"><i class="fas fa-shopping-cart"></i><span id="CardNum">0</span></h3>
                         <div class="dropdown show">
                             <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">@User.Identity.Name.ToString()</a>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                <a class="dropdown-item" href="#">Личный кабинет</a>
-                                <a class="dropdown-item" href="">Шото еще</a>
+                                <a class="dropdown-item" href="/Client/@User.Identity.Name">Мои заказы</a>
                                 <a class="dropdown-item" href="/User/Logout">Выйти из аккаунта</a>
                             </div>
                         </div>
@@ -97,10 +96,6 @@
                         <a class="btn btn-secondary" href="/User/Login" role="button">SingIn</a>
 
                     }
-
-
-
-
                 }
 
             </form>

@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using ServerPD.Models;
 using DataAccessLayer.Entities;
 using DataAccessLayer.Repositories;
+using DataAccessLayer.Interfaces;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 namespace ServerPD.Controllers
@@ -18,6 +19,12 @@ namespace ServerPD.Controllers
     public class ClientController : Controller
     {
         EFUnitOfWork db = new EFUnitOfWork();
+        private readonly IUnitOfWork uof;
+
+        public ClientController(IUnitOfWork uof)
+        {
+            this.uof = uof;
+        }
 
         [HttpGet]
         public IEnumerable<Client> GetClients()
@@ -35,11 +42,14 @@ namespace ServerPD.Controllers
             return new ObjectResult(client);
         }
 
-        [HttpGet("getclientbyname/{name}")]
-        public IEnumerable<Client> GetClientByName(string name)
+        [HttpGet("getclientbyemail/{email}")]
+        public async Task<IActionResult> GetClientByName(string email)
         {
-            List<Client> clients = db.Clients.GetAll().Where(c => c.Name.Contains(name)).ToList();
-            return clients;
+            Client client = await db.Clients.FirstOrDefaultAsync(c=>c.Email == email);
+            if (client == null)
+                return NotFound();
+            client = db.Clients.GetWithDeliveries(client.Id);
+            return new ObjectResult(client);
         }
 
         public IActionResult CreateClient(Client client)

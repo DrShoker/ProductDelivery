@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DataAccessLayer.Interfaces
 {
-    interface IUnitOfWork : IDisposable
+    public interface IUnitOfWork : IDisposable
     {
         IRepository<Product> Products { get; }
         IRepository<Entities.Products.ProductAttribute> ProductAttributes { get; }

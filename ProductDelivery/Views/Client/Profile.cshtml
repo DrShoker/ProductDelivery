@@ -6,36 +6,74 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>@User.Identity.Name profile</h2>
+<h2 class="text-center">@Model.Email profile</h2>
 
-@if (Model.Deliveries.Count > 0)
-{
-    <table class="table">
-        <thead class="thead-dark">
-            <tr>
-                <th>Date</th>
-                <th>CourierId</th>
-                <th>Products</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach(var delivery in Model.Deliveries)
+<div class="container">
+    @if (Model.Deliveries.Count > 0)
+    {
+        @foreach (var delivery in Model.Deliveries)
+        {
+            bool flag = false;
+            string tableclass = "";
+            if (delivery.Status != DeliveryStatus.Completed)
             {
-              <tr>
-                  <td>@delivery.Date</td>
-                  <td>@delivery.CourierId</td>
-                  <td>
-                      <ul>
-                          <li>Microsoft</li>
-                      </ul>
-                  </td>
-              </tr>
+                flag = true;
+                tableclass = "table-info";
             }
-        </tbody>
-    </table>
-}
-else
-{
-    <h3>this user hasn't got deliveries</h3> 
-}
+            <h2>Delivery № @delivery.Id</h2>
+            <table class="table @tableclass">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Date</th>
+                        <th>CourierId</th>
+                        <th>Products</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>@delivery.Date</td>
+                        <td>@delivery.CourierId</td>
+                        <td>
+                            <ul>
+                                @{ double sum = 0; }
+                                @foreach (var dap in delivery.DeliveryAndProducts)
+                                {
+                                    <li>@dap.Product.Name: @dap.Count</li>
+                                    sum += dap.Count * dap.Product.Price;
+                                }
+                            </ul>
+                            @{ sum /= 100;}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <h3>Sum @sum $</h3>
+            @if (flag)
+            {
+                <div id="googleMap" style="width:100%;height:400px;"></div>
+                <script>
+                    function myMap(x,y) {
+                        var mapProp = {
+                            center: new google.maps.LatLng(50.005668, 36.229267),
+                            zoom: 15
+                        };
+                        var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+                        var marker = new google.maps.Marker({
+                            position: map.center,
+                            animation: google.maps.Animation.BOUNCE
+                        });
+
+                        marker.setMap(map);
+                    }
+                </script>
+                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYW9HueqiYzyemr-X9Lku_ZuGejPxii_8&callback=myMap"></script>
+            }
+            <hr />
+        }
+    }
+    else
+    {
+        <h3>this user hasn't got deliveries</h3>
+    }
+</div>
 
