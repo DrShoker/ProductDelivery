@@ -8,7 +8,7 @@ namespace ServerPD.Helper
     {
         public void Send(string body, string email)
         {
-            SmtpClient client = new SmtpClient("gmail.com");
+            SmtpClient client = new SmtpClient("smtp.gmail.com");
             client.UseDefaultCredentials = false;
             client.Credentials = new NetworkCredential("ontouragetest@gmail", "boulder840");
 
