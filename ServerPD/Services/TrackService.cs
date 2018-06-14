@@ -3,17 +3,31 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
+using DataAccessLayer.Repositories;
 
 namespace ServerPD.Services
 {
     public class TrackService : ITrackService
     {
-        Dictionary<int, Point> deliveries;
+        Dictionary<int, DoublePoint> deliveries = new Dictionary<int, DoublePoint>();
 
-        public void AddDelivery(int deliveryId, int x, int y)
+        public TrackService()
+        {
+            using (var unitOf = new EFUnitOfWork())
+            {
+                unitOf
+                    .Deliveries
+                    .GetAll()
+                    .Where(d => d.Status != DataAccessLayer.Enums.DeliveryStatus.Completed)
+                    .ToList()
+                    .ForEach(d => deliveries.Add(d.Id, new DoublePoint(0, 0)));
+            }
+        }
+
+        public void AddDelivery(int deliveryId, double x, double y)
         {
             if (!deliveries.Keys.Contains(deliveryId))
-                deliveries.Add(deliveryId, new Point(x, y));
+                deliveries.Add(deliveryId, new DoublePoint(x, y));
         }
 
         public void EndDelivery(int deliveryId)
@@ -22,16 +36,16 @@ namespace ServerPD.Services
                 deliveries.Remove(deliveryId);
         }
 
-        public Point GetDeliveryCorrds(int deliveryId)
+        public DoublePoint GetDeliveryCorrds(int deliveryId)
         {
             if (deliveries.Keys.Contains(deliveryId))
                 return deliveries[deliveryId];
-            throw new NullReferenceException();
+            return new DoublePoint(0, 0);
         }
 
-        public void UpdateCoords(int deliveryId, int x, int y)
+        public void UpdateCoords(int deliveryId, double x, double y)
         {
-            Point newPoint = new Point(x, y);
+            DoublePoint newPoint = new DoublePoint(x, y);
             if (deliveries.Keys.Contains(deliveryId))
             {
                 deliveries[deliveryId] = newPoint;

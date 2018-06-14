@@ -27,6 +27,7 @@ namespace ProductDelivery
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors();
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(options =>
                 {
@@ -63,7 +64,7 @@ namespace ProductDelivery
 
             app.UseStaticFiles();
             app.UseAuthentication();
-
+            app.UseCors(builder => builder.WithOrigins("http://localhost:58123").AllowAnyHeader());
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

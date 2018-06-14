@@ -8,11 +8,11 @@ namespace ServerPD.Services
 {
     public interface ITrackService
     {
-        void AddDelivery(int deliveryId, int x, int y);
+        void AddDelivery(int deliveryId, double x, double y);
 
-        Point GetDeliveryCorrds(int deliveryId);
+        DoublePoint GetDeliveryCorrds(int deliveryId);
 
-        void UpdateCoords(int deliveryId,int x, int y);
+        void UpdateCoords(int deliveryId, double x, double y);
 
         void EndDelivery(int deliveryId);
     }

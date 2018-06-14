@@ -1,0 +1,7 @@
+C:\Users\maksy\source\repos\ProductDelivery\TrackEmulator\bin\Debug\TrackEmulator.exe.config
+C:\Users\maksy\source\repos\ProductDelivery\TrackEmulator\bin\Debug\TrackEmulator.exe
+C:\Users\maksy\source\repos\ProductDelivery\TrackEmulator\bin\Debug\TrackEmulator.pdb
+C:\Users\maksy\source\repos\ProductDelivery\TrackEmulator\obj\Debug\TrackEmulator.csprojAssemblyReference.cache
+C:\Users\maksy\source\repos\ProductDelivery\TrackEmulator\obj\Debug\TrackEmulator.csproj.CoreCompileInputs.cache
+C:\Users\maksy\source\repos\ProductDelivery\TrackEmulator\obj\Debug\TrackEmulator.exe
+C:\Users\maksy\source\repos\ProductDelivery\TrackEmulator\obj\Debug\TrackEmulator.pdb

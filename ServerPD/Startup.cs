@@ -17,6 +17,7 @@ namespace ServerPD
 {
     public class Startup
     {
+    
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -27,6 +28,12 @@ namespace ServerPD
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
+            {
+                builder.AllowAnyOrigin()
+                       .AllowAnyMethod()
+                       .AllowAnyHeader();
+            }));
             services.AddMvc();
             services.AddScoped<IUnitOfWork, EFUnitOfWork>();
             services.AddSingleton<ITrackService, TrackService>();
@@ -46,6 +53,7 @@ namespace ServerPD
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            app.UseCors("MyPolicy");
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
