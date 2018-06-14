@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewData["Title"] = "EditProduct";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>EditProduct</h2>
+<div>
+    <form method="post" action="">
+        <input type="hidden" value="@ViewBag.ProductId" name="Id" />
+        <table>
+            <tr>
+                <td><p>Department </p></td>
+                <td><input type="text" name="Department" /> </td>
+            </tr>
+            <tr>
+                <td><p>Price</p></td>
+                <td>
+                    <input type="text" name="Price" />
+                </td>
+            </tr>
+            <tr>
+                <td><p>Name </p></td>
+                <td><input type="text" name="Name" /> </td>
+            </tr>
+            <tr>
+                <td><p>Type</p></td>
+                <td>
+                    <input type="text" name="Type" />
+                </td>
+            </tr>
+            <tr>
+                <td><p>Weight</p></td>
+                <td>
+                    <input type="text" name="Weight" />
+                </td>
+            </tr>
+            <tr>
+                <td><p>Description </p></td>
+                <td><input type="text" name="Description" /> </td>
+            </tr>
+            <tr>
+                <td><p>Manufacturer</p></td>
+                <td>
+                    <input type="text" name="Manufacturer" />
+                </td>
+            </tr>
+            <tr>
+                <td><p>Count </p></td>
+                <td><input type="text" name="Count" /> </td>
+            </tr>
+
+            <tr><td><input type="submit" value="submit" /> </td><td></td></tr>
+        </table>
+    </form>
+</div>

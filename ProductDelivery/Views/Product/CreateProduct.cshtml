@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewData["Title"] = "CreateProduct";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>CreateProduct</h2>
+@Html.ActionLink("Return to get all users", "GetPatients")
+        <form method="post" action="">
+            <div class="form-group">
+            <table>
+                <tr>
+                    <td><p>Department </p></td>
+                    <td><input type="text" class="form-control" name="Department"  placeholder="Input department"/> </td>
+                </tr>
+                <tr>
+                    <td><p>Price</p></td>
+                    <td>
+                        <input type="text" class="form-control" name="Price" placeholder="Input price" />
+                    </td>
+                </tr>
+                <tr>
+                    <td><p>Name </p></td>
+                    <td><input type="text" class="form-control" name="Name" placeholder="Input name"/> </td>
+                </tr>
+                <tr>
+                    <td><p>Type</p></td>
+                    <td>
+                        <input type="text" class="form-control" name="Type" placeholder="Input type" />
+                    </td>
+                </tr>
+                <tr>
+                    <td><p>Weight </p></td>
+                    <td><input type="text" class="form-control" name="Weight" placeholder="Input weight" /> </td>
+                </tr>
+                <tr>
+                    <td><p>Description</p></td>
+                    <td>
+                        <input type="text" class="form-control" name="Description" placeholder="Input description" />
+                    </td>
+                </tr>
+                <tr>
+                    <td><p>Manufacturer </p></td>
+                    <td><input type="text" class="form-control" name="Manufacturer" placeholder="Input manufacturer" /> </td>
+                </tr>
+                <tr>
+                    <td><p>Count</p></td>
+                    <td>
+                        <input type="text" class="form-control" name="Count" placeholder="Input count" />
+                    </td>
+                </tr>
+                <tr><td><input type="submit" value="submit" /> </td><td></td></tr>
+            </table>
+            </div>
+        </form>
+

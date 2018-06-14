@@ -1,0 +1,18 @@
+﻿@using DataAccessLayer.Entities;
+@model IEnumerable<Delivery>
+@{
+    ViewData["Title"] = "GetDeliveriesByCurrentCourier";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>GetDeliveriesByCurrentCourier</h2>
+@foreach(var d in Model)
+{
+    <div>
+        <p>Delivery's number: @d.Id</p>
+        <p>Date: @d.Date</p>
+        <p>Status: @d.Status</p>
+    </div>
+
+}
+

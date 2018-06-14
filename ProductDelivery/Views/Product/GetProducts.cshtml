@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewData["Title"] = "GetProducts";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>GetProducts</h2>
+<div>
+    @Html.ActionLink("Add new product", "CreateProduct")
+    <table class="table table-striped">
+        <tr>
+            <td><p>Department</p></td>
+            <td><p>Price</p></td>
+            <td><p>Name</p></td>
+            <td><p>Type</p></td>
+            <td><p>Weight</p></td>
+            <td><p>Description</p></td>
+            <td><p>Manufacturer</p></td>
+            <td><p>Count</p></td>
+            <td></td>
+        </tr>
+        @foreach (var b in ViewBag.Result)
+        {
+        <tr>
+            <td><p>@b.Department</p></td>
+            <td><p>@b.Price</p></td>
+            <td><p>@b.Name</p></td>
+            <td><p>@b.Type</p></td>
+            <td><p>@b.Weight</p></td>
+            <td><p>@b.Description</p></td>
+            <td><p>@b.Manufacturer</p></td>
+            <td><p>@b.Count</p></td>
+            <td><p><a href="/Product/EditProduct/@b.Id">Edit</a></p></td>
+            <td><p><a href="/Product/DeleteProduct/@b.Id">Delete</a></p></td>
+        </tr>
+        }
+    </table>
+</div>

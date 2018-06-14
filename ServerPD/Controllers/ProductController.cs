@@ -43,7 +43,7 @@ namespace ServerPD.Controllers
             return products;
         }
         [HttpPost]
-        public IActionResult CreateProduct(Product product)
+        public IActionResult CreateProduct([FromBody]Product product)
         {
             if (!ModelState.IsValid)
             {
@@ -65,10 +65,12 @@ namespace ServerPD.Controllers
             return Ok(product);
         }
         [HttpPut]
-        public IActionResult EditProduct(Product product)
+        public IActionResult EditProduct([FromBody]Product product)
         {
             if (!ModelState.IsValid)
                 return BadRequest();
+
+           
 
             db.Products.Update(product);
             db.Save();

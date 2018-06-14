@@ -49,6 +49,13 @@ namespace ServerPD.Controllers
             db.Save();
             return CreatedAtRoute("DefaultApi", new { id = courier.Id }, courier);
         }
+        [HttpGet("getcouriercabinet")]
+        public IActionResult CourierPersonalArea()
+        {
+            string email = User.Identity.Name;
+            Courier courier = db.Couriers.FirstOrDefault(c => c.Email == email);
+            return Ok(courier);
+        }
 
         [HttpDelete("deletecourier/{id}")]
         public IActionResult DeleteCourier(int id)
@@ -62,13 +69,13 @@ namespace ServerPD.Controllers
         }
 
         [HttpPut]
-        public IActionResult EditCourier(int id, Courier courier)
+        public IActionResult EditCourier([FromBody]Courier courier)
         {
-            if (!ModelState.IsValid)
-                return BadRequest();
+            //if (!ModelState.IsValid)
+            //    return BadRequest();
 
-            if (id != courier.Id)
-                return BadRequest();
+            //if (id != courier.Id)
+            //    return BadRequest();
 
             db.Couriers.Update(courier);
             db.Save();

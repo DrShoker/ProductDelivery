@@ -1,4 +1,5 @@
 ﻿using DataAccessLayer.Entities;
+using DataAccessLayer.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using ProductDelivery.Models;
@@ -12,6 +13,8 @@ namespace ProductDelivery.Controllers
 {
     public class CourierController : Controller
     {
+        EFUnitOfWork db = new EFUnitOfWork();
+
         [HttpGet]
         public IActionResult GetCouriers()
         {
@@ -30,7 +33,17 @@ namespace ProductDelivery.Controllers
 
             else
                 ViewBag.Result = "Error";
-            return RedirectToAction("GetCouriers");
+            return View();
+        }
+        
+        [HttpGet]
+        public IActionResult CourierPersonalArea()
+        {
+            string email = User.Identity.Name;
+            Courier courier = db.Couriers.FirstOrDefault(c => c.Email == email);
+            ViewBag.Result = courier;
+
+            return View();
         }
 
         [HttpGet]
@@ -51,7 +64,7 @@ namespace ProductDelivery.Controllers
 
             else
                 ViewBag.Result = "Error";
-            return RedirectToAction("GetCouriers");
+            return View();
         }
 
         [HttpGet]
@@ -64,15 +77,11 @@ namespace ProductDelivery.Controllers
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             HttpResponseMessage response = client.GetAsync($"api/Courier/getcourierbyname/{name}").Result;
 
-            if (response.IsSuccessStatusCode)
-            {
-                data = response.Content.ReadAsStringAsync().Result;
-                ViewBag.Result = JsonConvert.DeserializeObject<IEnumerable<Courier>>(data);
-            }
+            data = response.Content.ReadAsStringAsync().Result;
+            IEnumerable<Courier> couriers = JsonConvert.DeserializeObject<IEnumerable<Courier>>(data);
+            //ViewBag.Result = products;
 
-            else
-                ViewBag.Result = "Error";
-            return RedirectToAction("GetCouriers");
+            return View(couriers);
         }
 
         [HttpPost]
@@ -104,7 +113,7 @@ namespace ProductDelivery.Controllers
             return RedirectToAction("GetCouriers");
         }
 
-        [HttpPut]
+        [HttpPost]
         public IActionResult EditCourier(Courier courier)
         {
             var courierJson = JsonConvert.SerializeObject(courier);
@@ -114,7 +123,24 @@ namespace ProductDelivery.Controllers
             httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             HttpResponseMessage response = httpClient.PutAsync("api/Courier/", new StringContent(courierJson, Encoding.UTF8, "application/json")).Result;
 
-            return RedirectToAction("GetCouriers");
+            return RedirectToAction("CourierPersonalArea");
+        }
+
+        [HttpGet]
+        public IActionResult GetDeliveriesByCurrentCourier(Courier courier)
+        {
+            string data;
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri(UrlContacts.BaseUrl);
+            client.DefaultRequestHeaders.Clear();
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            HttpResponseMessage response = client.GetAsync($"api/Delivery/getcourierdeliveries/{courier}").Result;
+
+            data = response.Content.ReadAsStringAsync().Result;
+            IEnumerable<Delivery> deliveries = JsonConvert.DeserializeObject<IEnumerable<Delivery>>(data);
+            //ViewBag.Result = products;
+
+            return View(deliveries);
         }
     }
 }

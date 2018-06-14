@@ -1,0 +1,37 @@
+﻿@{
+    ViewData["Title"] = "CourierPersonalArea";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>CourierPersonalArea</h2>
+<div class="jumbotron">
+    <div class="thumbnail">
+        <img src="..." alt="...">
+        <div class="caption">
+            <h3>Your's photo</h3>
+            <a href="#" class="btn btn-primary" role="button">Laod new photo</a>
+            <a href="#" class="btn" btn-default role="button">Cancel</a>
+        </div>
+        <form method="post" action="/Courier/EditCourier/">
+        <input type="hidden" value="@ViewBag.Result.Id" name="Id"/>
+        <input type="hidden" value="@ViewBag.Result.Password" name="Password" />
+        <p>Name:<input type="text" class="form-control" value="@ViewBag.Result.Name" name="Name" /> </p>
+        <p>Email: <input type="text" class="form-control" value="@ViewBag.Result.Email" name="Email"/></p>
+        <p>Sex: <input type="text" class="form-control" value="@ViewBag.Result.Sex" name="Sex"/></p>
+        <p>Date of birth: <input type="text" class="form-control" value="@ViewBag.Result.BDay" name="BDay"/></p>
+        <p>Telephone: <input type="text" class="form-control" value="@ViewBag.Result.Telephone" name="Telephone"/></p>
+        <p>Address: <input type="text" class="form-control" value="@ViewBag.Result.Address" name="Address"/></p>
+        <p>Likes: <input type="text" class="form-control" disabled value="@ViewBag.Result.Likes" name="Likes"/></p>
+        <p>Dislikes: <input type="text" class="form-control" disabled value="@ViewBag.Result.Dislikes" name="Dislikes"/></p>
+        <br />
+        <p>Deliveries: <input type="text" class="form-control" disabled value="@ViewBag.Result.DeliveryCounter" name="DeliveryCounter"/></p>
+        <br />
+        <a href="GetDeliveriesByCurrentCourier" class="btn btn-primary" role="button">Check my deliveries</a>
+        <center><input type="submit" class="btn btn-primary" value="Save Changes" /></center>
+        </form>
+
+
+    </div>
+
+
+

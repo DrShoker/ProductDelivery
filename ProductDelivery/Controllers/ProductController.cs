@@ -39,11 +39,11 @@ namespace ProductDelivery.Controllers
 
         }
 
-        [HttpGet]
-        public IActionResult OpenProducts()
-        {
-            return View();
-        }
+        //[HttpGet]
+        //public IActionResult OpenProducts()
+        //{
+        //    return View();
+        //}
 
         [HttpGet]
         public IActionResult Catalog(Departments dep)
@@ -77,11 +77,15 @@ namespace ProductDelivery.Controllers
             HttpResponseMessage response = client.GetAsync($"api/Product/getproduct/{id}").Result;
 
 
-            data = response.Content.ReadAsStringAsync().Result;
-            IEnumerable<Product> products = JsonConvert.DeserializeObject<IEnumerable<Product>>(data);
-            //ViewBag.Result = products;
+            if (response.IsSuccessStatusCode)
+            {
+                data = response.Content.ReadAsStringAsync().Result;
+                ViewBag.Result = JsonConvert.DeserializeObject<Courier>(data);
+            }
 
-            return View(products);
+            else
+                ViewBag.Result = "Error";
+            return View();
 
         }
 
@@ -98,7 +102,7 @@ namespace ProductDelivery.Controllers
 
             data = response.Content.ReadAsStringAsync().Result;
             IEnumerable<Product> products = JsonConvert.DeserializeObject<IEnumerable<Product>>(data);
-            //ViewBag.Result = products;
+           // ViewBag.Result = products;
 
             return View(products);
 
@@ -127,7 +131,7 @@ namespace ProductDelivery.Controllers
 
         }
 
-            [HttpPost]
+            [HttpGet]
             public IActionResult DeleteProduct(int id)
         {
             HttpClient client = new HttpClient();
@@ -143,6 +147,7 @@ namespace ProductDelivery.Controllers
         [HttpGet]
         public IActionResult EditProduct(int id)
         {
+            ViewBag.ProductId = id;
             return View();
         }
 
@@ -150,7 +155,6 @@ namespace ProductDelivery.Controllers
         public IActionResult EditProduct(Product product)
         {
             var productJson = JsonConvert.SerializeObject(product);
-            string data;
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri(UrlContacts.BaseUrl);
             client.DefaultRequestHeaders.Clear();
@@ -161,21 +165,22 @@ namespace ProductDelivery.Controllers
             return RedirectToAction("GetProducts");
 
         }
+        public IActionResult Index()
+        {
+            return View();
+        }
 
     }
 
-        //[HttpGet]
-        //public IActionResult Catalog(Departments dep)
-        //{
-        //    Departments department = dep;
-        //    List<Product> products = db.Products.GetAll().Where(p=>p.Department==department).
-        //        OrderBy(p=>p.Type).ToList();
-        //    ViewBag.Dep = dep.ConvertToString();
-        //    return View(products);
-        //}
+    //[HttpGet]
+    //public IActionResult Catalog(Departments dep)
+    //{
+    //    Departments department = dep;
+    //    List<Product> products = db.Products.GetAll().Where(p=>p.Department==department).
+    //        OrderBy(p=>p.Type).ToList();
+    //    ViewBag.Dep = dep.ConvertToString();
+    //    return View(products);
+    //}
 
-        //public IActionResult Index()
-        //{
-        //    return View();
-        //}
-    }
+    
+}
