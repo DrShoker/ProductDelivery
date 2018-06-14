@@ -50,16 +50,17 @@ namespace DataAccessLayer.Repositories
             });
         }
 
-        public T Get(int id)
+        public virtual T Get(int id)
         {
             return set.Find(id);
         }
+
         public T Get(string name)
         {
             return set.Find(name);
         }
 
-        public IEnumerable<T> GetAll()
+        public virtual IEnumerable<T> GetAll()
         {
             return set;
         }

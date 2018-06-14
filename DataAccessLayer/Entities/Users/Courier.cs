@@ -10,6 +10,6 @@ namespace DataAccessLayer.Entities
         public int Likes { get; set; }
         public int Dislikes { get; set; }
 
-        public List<Delivery> Deliveries { get; set; }
+        public ICollection<Delivery> Deliveries { get; set; }
     }
 }

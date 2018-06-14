@@ -229,18 +229,10 @@ namespace ProductDelivery.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    Client client = await db.Clients.GetAll().ToAsyncEnumerable().FirstOrDefault();
-                    if (client == null)
-                    {
-                        db.Clients.Create(new Client { Email = model.Email, Password = model.Password });
-                        await db.SaveChangesAsync();
-
-                        await Authenticate(model.Email,"client");
-
-                        return RedirectToAction("Index", "Home");
-                    }
-                    else
-                        ModelState.AddModelError("", "Некорректные логин и (или) пароль");
+                    db.Clients.Create(new Client { Email = model.Email, Password = model.Password });
+                    await db.SaveChangesAsync();
+                    await Authenticate(model.Email, "client");
+                    return RedirectToAction("Index", "Home");
                 }
                 return View(model);
             }

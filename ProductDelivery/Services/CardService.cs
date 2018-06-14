@@ -20,10 +20,10 @@ namespace ProductDelivery.Services
         public int Length => card.Keys.Count;
         HttpClient client;
 
-        public CardService()
+        public CardService(IConfiguration config)
         {
             client = new HttpClient();
-            client.BaseAddress = new Uri("http://localhost:58123");
+            client.BaseAddress = new Uri(config["server"]);
             client.DefaultRequestHeaders.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }

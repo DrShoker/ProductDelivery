@@ -19,7 +19,7 @@ namespace DataAccessLayer.Entities
 
         string ImgPath { get; set; }
 
-        public List<ProductAttribute> Attributes { get; set; }
-        public List<DeliveryProduct> DeliveryAndProduct { get; set; }
+        public ICollection<ProductAttribute> Attributes { get; set; }
+        public ICollection<DeliveryProduct> DeliveryAndProduct { get; set; }
     }
 }

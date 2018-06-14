@@ -32,7 +32,6 @@ namespace ProductDelivery.Controllers
                 data = response.Content.ReadAsStringAsync().Result;
                 ViewBag.Result = JsonConvert.DeserializeObject<IEnumerable<Product>>(data);
             }
-
             else
                 ViewBag.Result = "Error";
             return View();

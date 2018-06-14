@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using DataAccessLayer.Entities;
 using DataAccessLayer.Repositories;
 using DataAccessLayer.Enums;
+using ServerPD.Services;
 
 namespace ServerPD.Controllers
 {
@@ -15,6 +16,13 @@ namespace ServerPD.Controllers
     public class DeliveryController : Controller
     {
         EFUnitOfWork db = new EFUnitOfWork();
+        private readonly ITrackService tracker;
+
+        public DeliveryController(ITrackService tracker)
+        {
+            this.tracker = tracker;
+        }
+
 
         [HttpGet]
         public IEnumerable<Delivery> GetDeliveries()
@@ -53,8 +61,15 @@ namespace ServerPD.Controllers
             try
             {
                 delivery.Client = db.Clients.FirstOrDefault(c => c.Email == delivery.Client.Email);
+
+                //TODO: create distribute system
+                delivery.CourierId = 2;
+
                 db.Deliveries.Create(delivery);
                 db.Save();
+
+                //TODO: create solution for coords
+                tracker.AddDelivery(delivery.Id, 50.005668, 36.229267);
                 return CreatedAtRoute("DefaultApi", new { id = delivery.Id }, delivery);
             }
             catch(Exception e)
@@ -73,6 +88,7 @@ namespace ServerPD.Controllers
             db.Save();
             return Ok(delivery);
         }
+
         [HttpPut]
         public IActionResult EditDelivery(int id, Delivery delivery)
         {
